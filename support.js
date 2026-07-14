@@ -417,12 +417,11 @@
   function processHelmet(xdc) {
     for (const helmet of Array.from(xdc.querySelectorAll('helmet'))) {
       for (const child of Array.from(helmet.childNodes)) {
-        // Skip the _ds bundle links that won't resolve in production
         if (child.nodeType === Node.ELEMENT_NODE) {
-          const href = child.getAttribute('href') || child.getAttribute('src') || '';
-          if (href.includes('/_ds/') || href.includes('_ds_bundle')) {
-            // still append — the 404 is silent and the inline tokens cover what's needed
-          }
+          const ref = child.getAttribute('href') || child.getAttribute('src') || '';
+          // _ds/ files don't exist in production — skip them entirely.
+          // Our injectBaseStyles() already provides all required tokens.
+          if (ref.includes('_ds')) continue;
         }
         document.head.appendChild(child.cloneNode(true));
       }
