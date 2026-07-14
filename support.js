@@ -12,6 +12,9 @@
   // even when the _ds/ folder is absent (e.g. Vercel production).
   const DS_CSS = `
     @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Lexend+Deca:wght@300;400;500&display=swap');
+    /* FOUC prevention — reveal only after runtime has rendered */
+    x-dc { visibility: hidden; }
+    x-dc.dc-ready { visibility: visible; }
     :root {
       --font-display: 'Google Sans', 'Outfit', ui-sans-serif, system-ui, sans-serif;
       --font-sans: 'Lexend Deca', ui-sans-serif, system-ui, sans-serif;
@@ -461,6 +464,7 @@
       // Static page — just wire up hovers and local imports
       attachStyleHovers(xdc);
       await resolveXImports(xdc);
+      xdc.classList.add('dc-ready');
       return;
     }
 
@@ -502,6 +506,9 @@
       // Post-process: style-hovers and component imports
       attachStyleHovers(xdc);
       await resolveXImports(xdc);
+
+      // Reveal — eliminates flash of unprocessed {{ }} template text
+      xdc.classList.add('dc-ready');
     }
 
     instance._dc_rerender = function () {
