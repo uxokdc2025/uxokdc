@@ -50,7 +50,7 @@
       const link = document.createElement('link');
       link.rel = 'icon';
       link.type = 'image/svg+xml';
-      link.href = '/favicon.svg';
+      link.href = '/favicon-dc.svg';
       document.head.appendChild(link);
 
       const fallback = document.createElement('link');

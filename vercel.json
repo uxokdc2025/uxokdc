@@ -2,7 +2,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/", "destination": "/Home.dc.html" },
-    { "source": "/favicon.ico", "destination": "/favicon.svg" }
+    { "source": "/favicon.ico", "destination": "/favicon-dc.svg" }
   ],
   "headers": [
     {
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "source": "/favicon.svg",
+      "source": "/favicon-dc.svg",
       "headers": [
         { "key": "Content-Type", "value": "image/svg+xml" },
         { "key": "Cache-Control", "value": "public, max-age=86400" }
