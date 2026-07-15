@@ -44,6 +44,21 @@
     style.id = 'x-dc-base';
     style.textContent = DS_CSS;
     document.head.insertBefore(style, document.head.firstChild);
+
+    // Favicon — inject once, skip if already present
+    if (!document.querySelector('link[rel~="icon"]')) {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/svg+xml';
+      link.href = '/favicon.svg';
+      document.head.appendChild(link);
+
+      // PNG fallback for older browsers
+      const fallback = document.createElement('link');
+      fallback.rel = 'alternate icon';
+      fallback.href = '/favicon.svg';
+      document.head.appendChild(fallback);
+    }
   }
 
   // ── React shim ───────────────────────────────────────────────────────────
