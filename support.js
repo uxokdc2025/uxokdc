@@ -53,12 +53,215 @@
       link.href = '/favicon.svg';
       document.head.appendChild(link);
 
-      // PNG fallback for older browsers
       const fallback = document.createElement('link');
       fallback.rel = 'alternate icon';
       fallback.href = '/favicon.svg';
       document.head.appendChild(fallback);
     }
+  }
+
+  // ── SEO + AI crawler metadata ─────────────────────────────────────────────
+  const SITE_ORIGIN = 'https://uxokdc.com';
+  const AUTHOR = 'David Cervantes';
+  const AUTHOR_HANDLE = '@uxokdc';
+
+  const PAGE_META = {
+    'Home.dc.html': {
+      title: 'David Cervantes — AI Product Designer & Strategist',
+      description: '25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.',
+      type: 'website',
+    },
+    'About.dc.html': {
+      title: 'About — David Cervantes',
+      description: 'Product designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native.',
+      type: 'profile',
+    },
+    'Experience.dc.html': {
+      title: 'Experience — David Cervantes',
+      description: 'Career timeline: design leadership across AI, SaaS, e-commerce, fintech, and enterprise — from IC to strategy.',
+      type: 'website',
+    },
+    'Work.dc.html': {
+      title: 'Work — David Cervantes',
+      description: 'Selected case studies: AI products, SaaS platforms, native apps, and brand systems built across 25 years of product design.',
+      type: 'website',
+    },
+    'TraderVault LM Case Study.dc.html': {
+      title: 'TraderVault LM — AI Trading Intelligence | David Cervantes',
+      description: 'Case study: designing a conversational AI trading platform built the way traders actually think. Strategy, research, and end-to-end product design.',
+      type: 'article',
+      keywords: 'AI product design, trading platform, conversational AI, UX case study',
+    },
+    'TintoProps Case Study.dc.html': {
+      title: 'TintoProps — AI-Native Real Estate Portal | David Cervantes',
+      description: "Case study: Colombia's first AI-native real estate portal. End-to-end product design for property search powered by conversational AI.",
+      type: 'article',
+      keywords: 'AI product design, real estate, proptech, UX case study, Colombia',
+    },
+    'Construct AI Case Study.dc.html': {
+      title: 'Construct AI — Project Intelligence Platform | David Cervantes',
+      description: 'Case study: AI project intelligence for construction teams. Designing proactive insights and voice-first workflows for field and office.',
+      type: 'article',
+      keywords: 'AI product design, construction tech, project intelligence, UX case study',
+    },
+    'ULTRA Case Study.dc.html': {
+      title: 'ULTRA — Social Feed You Control | David Cervantes',
+      description: 'Case study: a social feed built on sentiment filters and blockchain transparency. Designing trust and control back into social media.',
+      type: 'article',
+      keywords: 'social media design, blockchain, UX case study, feed algorithms',
+    },
+    'NESTRE Case Study.dc.html': {
+      title: 'NESTRE — Cognitive Training App | David Cervantes',
+      description: 'Case study: rebuilding a cognitive training facility for mobile. 90% smooth navigation, 85% professional feel in usability testing.',
+      type: 'article',
+      keywords: 'mobile app design, cognitive training, health tech, UX case study',
+    },
+    'ULTA BEAUTY Case Study.dc.html': {
+      title: 'Ulta Beauty Media — Self-Serve Ad Platform | David Cervantes',
+      description: 'Case study: a self-serve advertising platform built on first-party retail data. 85% usability score, designed for non-technical media buyers.',
+      type: 'article',
+      keywords: 'retail media, ad platform, UX case study, first-party data',
+    },
+    'YELO Case Study.dc.html': {
+      title: 'Yelo — Campus Ride-Hailing Network | David Cervantes',
+      description: 'Case study: a ride-hailing network built only for campus. 90% safety satisfaction, 25% reduction in wait times.',
+      type: 'article',
+      keywords: 'mobility design, ride-hailing, campus app, UX case study',
+    },
+    'AI Genius Case Study.dc.html': {
+      title: 'AI Genius — Freelance Intelligence Platform | David Cervantes',
+      description: 'Case study: revolutionizing project-based work with AI. 90% of freelancer personas saved time; 85% of companies noted less hiring complexity.',
+      type: 'article',
+      keywords: 'AI product design, freelance platform, gig economy, UX case study',
+    },
+  };
+
+  function injectSEO() {
+    const filename = location.pathname.split('/').pop() || 'Home.dc.html';
+    const meta     = PAGE_META[filename] || PAGE_META['Home.dc.html'];
+    const canonical = SITE_ORIGIN + location.pathname;
+
+    function setMeta(name, content, attr = 'name') {
+      if (!content) return;
+      let el = document.querySelector(`meta[${attr}="${name}"]`);
+      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute('content', content);
+    }
+
+    function setLink(rel, href) {
+      let el = document.querySelector(`link[rel="${rel}"]`);
+      if (!el) { el = document.createElement('link'); el.rel = rel; document.head.appendChild(el); }
+      el.href = href;
+    }
+
+    // ── Title ──
+    if (!document.title || document.title === filename) {
+      document.title = meta.title;
+    }
+
+    // ── Core meta ──
+    setMeta('description', meta.description);
+    if (meta.keywords) setMeta('keywords', meta.keywords);
+    setMeta('author', AUTHOR);
+
+    // ── Robots — allow all crawlers including AI ──
+    setMeta('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+
+    // ── Canonical ──
+    setLink('canonical', canonical);
+
+    // ── Open Graph ──
+    setMeta('og:type',        meta.type || 'website',    'property');
+    setMeta('og:title',       meta.title,                'property');
+    setMeta('og:description', meta.description,          'property');
+    setMeta('og:url',         canonical,                 'property');
+    setMeta('og:site_name',   'David Cervantes',         'property');
+    setMeta('og:locale',      'en_US',                   'property');
+    setMeta('og:image',       SITE_ORIGIN + '/og-image.png', 'property');
+
+    // ── Twitter / X Card ──
+    setMeta('twitter:card',        'summary_large_image');
+    setMeta('twitter:site',        AUTHOR_HANDLE);
+    setMeta('twitter:creator',     AUTHOR_HANDLE);
+    setMeta('twitter:title',       meta.title);
+    setMeta('twitter:description', meta.description);
+    setMeta('twitter:image',       SITE_ORIGIN + '/og-image.png');
+
+    // ── AI crawler hints ──
+    setMeta('ai:content-type', 'portfolio');
+    setMeta('ai:author',       AUTHOR);
+    setMeta('ai:topic',        'UX design, product design, AI product design, design systems');
+
+    // ── JSON-LD structured data ──
+    if (document.querySelector('script[data-ld]')) return;
+
+    const isCase = filename.includes('Case Study');
+
+    const personLD = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: AUTHOR,
+      url: SITE_ORIGIN,
+      jobTitle: 'AI Product Designer & Strategist',
+      description: '25 years designing digital products — from interfaces to AI-native systems.',
+      email: 'uxokdc@gmail.com',
+      sameAs: [
+        'https://www.linkedin.com/in/davidcervantes/',
+        SITE_ORIGIN,
+      ],
+      knowsAbout: [
+        'UX Design', 'Product Strategy', 'AI Product Design',
+        'Design Systems', 'User Research', 'Interaction Design',
+        'Frontend Development', 'Conversational AI',
+      ],
+    };
+
+    const websiteLD = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'David Cervantes — Portfolio',
+      url: SITE_ORIGIN,
+      author: { '@type': 'Person', name: AUTHOR },
+      description: 'Portfolio of David Cervantes, AI product designer and strategist.',
+    };
+
+    const breadcrumbLD = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home',  item: SITE_ORIGIN + '/' },
+        isCase
+          ? { '@type': 'ListItem', position: 2, name: 'Work', item: SITE_ORIGIN + '/Work.dc.html' }
+          : null,
+        isCase
+          ? { '@type': 'ListItem', position: 3, name: meta.title.split('—')[0].trim(), item: canonical }
+          : null,
+      ].filter(Boolean),
+    };
+
+    const graphs = [personLD, websiteLD, breadcrumbLD];
+
+    if (isCase) {
+      graphs.push({
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: meta.title,
+        description: meta.description,
+        url: canonical,
+        author: { '@type': 'Person', name: AUTHOR },
+        creator: { '@type': 'Person', name: AUTHOR },
+        genre: 'UX Case Study',
+        keywords: meta.keywords || 'UX design, product design, case study',
+        inLanguage: 'en',
+        isPartOf: { '@type': 'WebSite', name: 'David Cervantes Portfolio', url: SITE_ORIGIN },
+      });
+    }
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-ld', '1');
+    script.textContent = JSON.stringify(graphs, null, 0);
+    document.head.appendChild(script);
   }
 
   // ── React shim ───────────────────────────────────────────────────────────
@@ -464,6 +667,7 @@
   // ── Main boot ─────────────────────────────────────────────────────────────
   async function boot() {
     injectBaseStyles();
+    injectSEO();
 
     const xdc = document.querySelector('x-dc');
     if (!xdc) return;
