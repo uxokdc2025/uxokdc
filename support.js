@@ -163,6 +163,7 @@
     setMeta('description', meta.description);
     if (meta.keywords) setMeta('keywords', meta.keywords);
     setMeta('author', AUTHOR);
+    setMeta('google-site-verification', 'yQmdruntVfcbDBFy4fgidYRZZ11jOS521wZYt3');
 
     // ── Robots — allow all crawlers including AI ──
     setMeta('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
