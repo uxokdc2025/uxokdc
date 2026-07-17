@@ -85,6 +85,11 @@
 
       /* Hero overlay text position on home */
       [style*="top:130px;left:48px"]{top:88px!important;left:20px!important;right:20px!important;width:auto!important;}
+
+      /* iOS Safari: 100vh includes browser chrome — use dvh so sticky hero fills the visible viewport */
+      [style*="position:sticky"][style*="height:100vh"]{height:100dvh!important;min-height:0!important;}
+      /* Hero container: also use dvh so scroll length matches visible screen */
+      [style*="height:300vh"]{height:300dvh!important;}
     }
   `;
 
