@@ -66,69 +66,69 @@
   const AUTHOR_HANDLE = '@uxokdc';
 
   const PAGE_META = {
-    'Home.dc.html': {
+    'index.html': {
       title: 'David Cervantes — AI Product Designer & Strategist',
       description: '25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.',
       type: 'website',
     },
-    'About.dc.html': {
+    'About.html': {
       title: 'About — David Cervantes',
       description: 'Product designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native.',
       type: 'profile',
     },
-    'Experience.dc.html': {
+    'Experience.html': {
       title: 'Experience — David Cervantes',
       description: 'Career timeline: design leadership across AI, SaaS, e-commerce, fintech, and enterprise — from IC to strategy.',
       type: 'website',
     },
-    'Work.dc.html': {
+    'Work.html': {
       title: 'Work — David Cervantes',
       description: 'Selected case studies: AI products, SaaS platforms, native apps, and brand systems built across 25 years of product design.',
       type: 'website',
     },
-    'TraderVault LM Case Study.dc.html': {
+    'TraderVault LM Case Study.html': {
       title: 'TraderVault LM — AI Trading Intelligence | David Cervantes',
       description: 'Case study: designing a conversational AI trading platform built the way traders actually think. Strategy, research, and end-to-end product design.',
       type: 'article',
       keywords: 'AI product design, trading platform, conversational AI, UX case study',
     },
-    'TintoProps Case Study.dc.html': {
+    'TintoProps Case Study.html': {
       title: 'TintoProps — AI-Native Real Estate Portal | David Cervantes',
       description: "Case study: Colombia's first AI-native real estate portal. End-to-end product design for property search powered by conversational AI.",
       type: 'article',
       keywords: 'AI product design, real estate, proptech, UX case study, Colombia',
     },
-    'Construct AI Case Study.dc.html': {
+    'Construct AI Case Study.html': {
       title: 'Construct AI — Project Intelligence Platform | David Cervantes',
       description: 'Case study: AI project intelligence for construction teams. Designing proactive insights and voice-first workflows for field and office.',
       type: 'article',
       keywords: 'AI product design, construction tech, project intelligence, UX case study',
     },
-    'ULTRA Case Study.dc.html': {
+    'ULTRA Case Study.html': {
       title: 'ULTRA — Social Feed You Control | David Cervantes',
       description: 'Case study: a social feed built on sentiment filters and blockchain transparency. Designing trust and control back into social media.',
       type: 'article',
       keywords: 'social media design, blockchain, UX case study, feed algorithms',
     },
-    'NESTRE Case Study.dc.html': {
+    'NESTRE Case Study.html': {
       title: 'NESTRE — Cognitive Training App | David Cervantes',
       description: 'Case study: rebuilding a cognitive training facility for mobile. 90% smooth navigation, 85% professional feel in usability testing.',
       type: 'article',
       keywords: 'mobile app design, cognitive training, health tech, UX case study',
     },
-    'ULTA BEAUTY Case Study.dc.html': {
+    'ULTA BEAUTY Case Study.html': {
       title: 'Ulta Beauty Media — Self-Serve Ad Platform | David Cervantes',
       description: 'Case study: a self-serve advertising platform built on first-party retail data. 85% usability score, designed for non-technical media buyers.',
       type: 'article',
       keywords: 'retail media, ad platform, UX case study, first-party data',
     },
-    'YELO Case Study.dc.html': {
+    'YELO Case Study.html': {
       title: 'Yelo — Campus Ride-Hailing Network | David Cervantes',
       description: 'Case study: a ride-hailing network built only for campus. 90% safety satisfaction, 25% reduction in wait times.',
       type: 'article',
       keywords: 'mobility design, ride-hailing, campus app, UX case study',
     },
-    'AI Genius Case Study.dc.html': {
+    'AI Genius Case Study.html': {
       title: 'AI Genius — Freelance Intelligence Platform | David Cervantes',
       description: 'Case study: revolutionizing project-based work with AI. 90% of freelancer personas saved time; 85% of companies noted less hiring complexity.',
       type: 'article',
@@ -137,8 +137,9 @@
   };
 
   function injectSEO() {
-    const filename = location.pathname.split('/').pop() || 'Home.dc.html';
-    const meta     = PAGE_META[filename] || PAGE_META['Home.dc.html'];
+    const slug = location.pathname.split('/').pop() || '';
+    const filename = (slug ? slug + '.html' : 'index.html');
+    const meta = PAGE_META[filename] || PAGE_META['index.html'];
     const canonical = SITE_ORIGIN + location.pathname;
 
     function setMeta(name, content, attr = 'name') {
@@ -232,7 +233,7 @@
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home',  item: SITE_ORIGIN + '/' },
         isCase
-          ? { '@type': 'ListItem', position: 2, name: 'Work', item: SITE_ORIGIN + '/Work.dc.html' }
+          ? { '@type': 'ListItem', position: 2, name: 'Work', item: SITE_ORIGIN + '/Work.html' }
           : null,
         isCase
           ? { '@type': 'ListItem', position: 3, name: meta.title.split('—')[0].trim(), item: canonical }

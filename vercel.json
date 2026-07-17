@@ -1,12 +1,12 @@
 {
+  "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/Home.dc.html" },
     { "source": "/favicon.ico", "destination": "/favicon-dc.svg" }
   ],
   "headers": [
     {
-      "source": "/(.*\\.dc\\.html)",
+      "source": "/(.*\\.html)",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         {
