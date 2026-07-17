@@ -37,7 +37,75 @@
     x-dc { display: contents; }
     x-import { display: none; }
     sc-if, sc-for { display: contents; }
+
+    /* ── Mobile bottom nav ── */
+    .dc-mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;align-items:center;justify-content:center;gap:6px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:rgba(242,241,238,0.95);border-top:0.5px solid #D8D6D0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+    .dc-mobile-nav a{font:500 13px var(--font-sans);color:#0D0D0D;text-decoration:none;border:0.5px solid #D8D6D0;border-radius:999px;padding:9px 16px;background:#fff;white-space:nowrap;transition:color 150ms,border-color 150ms;}
+    .dc-mobile-nav a.dc-active{background:#0D0D0D;color:#F2F1EE;border-color:#0D0D0D;}
+    .dc-mobile-nav a.dc-icon{width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+    @media(max-width:768px){
+      /* Hide desktop top nav, show bottom nav */
+      nav{display:none!important;}
+      body{padding-bottom:74px;}
+      .dc-mobile-nav{display:flex;}
+
+      /* Side padding reduction on section wrappers */
+      [style*="max-width:1240px"][style*="display:grid"]{padding-left:20px!important;padding-right:20px!important;}
+      [style*="padding:180px 48px"]{padding-top:88px!important;padding-left:20px!important;padding-right:20px!important;}
+      [style*="padding:0 48px"]{padding-left:16px!important;padding-right:16px!important;}
+      [style*="padding:40px"]{padding:16px!important;}
+      [style*="min-height:96vh"]{padding:88px 20px 60px!important;min-height:auto!important;}
+      [style*="min-height:80vh"]{padding-left:20px!important;padding-right:20px!important;}
+
+      /* Stack the two-column label | content layouts */
+      [style*="grid-template-columns:230px 1fr"],
+      [style*="grid-template-columns:1fr 1.5fr"]{display:block!important;}
+
+      /* Left-align section headings after stacking */
+      [style*="justify-self:end"]{justify-self:start!important;text-align:left!important;margin-bottom:18px!important;}
+
+      /* 4-col metadata strip → 2 col */
+      [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;gap:12px 16px!important;}
+
+      /* 2-col card grids → 1 col */
+      [style*="grid-template-columns:1fr 1fr"],
+      [style*="grid-template-columns:repeat(2,1fr)"],
+      [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+
+      /* Hero overlay text position on home */
+      [style*="top:130px;left:48px"]{top:88px!important;left:20px!important;right:20px!important;width:auto!important;}
+    }
   `;
+
+  function injectMobileNav() {
+    const slug = (location.pathname.replace(/^\//, '') || '').split('/')[0];
+    const isHome = !slug;
+    const isAbout = slug === 'About';
+    const isExp   = slug === 'Experience';
+    const isWork  = slug === 'Work' || slug.includes('Case');
+
+    const emailSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>`;
+    const liSvg    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>`;
+
+    function pill(href, label, active) {
+      return `<a href="${href}"${active ? ' class="dc-active"' : ''}>${label}</a>`;
+    }
+    function icon(href, svg, label, external) {
+      return `<a href="${href}"${external ? ' target="_blank" rel="noopener"' : ''} title="${label}" class="dc-icon">${svg}</a>`;
+    }
+
+    const nav = document.createElement('div');
+    nav.className = 'dc-mobile-nav';
+    nav.innerHTML =
+      icon('mailto:uxokdc@gmail.com?subject=Let%27s%20talk', emailSvg, 'Email', false) +
+      pill('/About',      'About',      isAbout) +
+      pill('/Experience', 'Experience', isExp)   +
+      pill('/Work',       'Work',       isWork)  +
+      icon('https://www.linkedin.com/in/davidcervantes/', liSvg, 'LinkedIn', true);
+
+    document.body.appendChild(nav);
+  }
 
   function injectBaseStyles() {
     const style = document.createElement('style');
@@ -670,6 +738,7 @@
   async function boot() {
     injectBaseStyles();
     injectSEO();
+    injectMobileNav();
 
     const xdc = document.querySelector('x-dc');
     if (!xdc) return;
