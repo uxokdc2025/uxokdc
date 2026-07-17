@@ -45,25 +45,32 @@
     .dc-mobile-nav a.dc-icon{width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
 
     @media(max-width:768px){
+      html{overflow-x:hidden;}
+      body{overflow-x:hidden;padding-bottom:74px;}
+
       /* Hide desktop top nav, show bottom nav */
       nav{display:none!important;}
-      body{padding-bottom:74px;}
       .dc-mobile-nav{display:flex;}
 
       /* Side padding reduction on section wrappers */
       [style*="max-width:1240px"][style*="display:grid"]{padding-left:20px!important;padding-right:20px!important;}
       [style*="padding:180px 48px"]{padding-top:88px!important;padding-left:20px!important;padding-right:20px!important;}
+      [style*="padding:190px 48px"]{padding-top:88px!important;padding-left:20px!important;padding-right:20px!important;}
       [style*="padding:0 48px"]{padding-left:16px!important;padding-right:16px!important;}
+      [style*=") 48px"]{padding-left:20px!important;padding-right:20px!important;}
       [style*="padding:40px"]{padding:16px!important;}
       [style*="min-height:96vh"]{padding:88px 20px 60px!important;min-height:auto!important;}
       [style*="min-height:80vh"]{padding-left:20px!important;padding-right:20px!important;}
 
       /* Stack the two-column label | content layouts */
       [style*="grid-template-columns:230px 1fr"],
+      [style*="grid-template-columns:200px 1fr"],
       [style*="grid-template-columns:1fr 1.5fr"]{display:block!important;}
 
-      /* Left-align section headings after stacking */
+      /* Left-align section headings and right-aligned flex children after stacking */
       [style*="justify-self:end"]{justify-self:start!important;text-align:left!important;margin-bottom:18px!important;}
+      [style*="align-items:flex-end"]{align-items:flex-start!important;}
+      [style*="text-align:right"]{text-align:left!important;}
 
       /* 4-col metadata strip → 2 col */
       [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;gap:12px 16px!important;}
@@ -79,6 +86,19 @@
   `;
 
   function injectMobileNav() {
+    const isMobile = window.matchMedia('(max-width:768px)').matches;
+    if (isMobile) {
+      function hideDesktopNavs() {
+        document.querySelectorAll('nav').forEach(function(n) {
+          n.style.setProperty('display', 'none', 'important');
+        });
+      }
+      hideDesktopNavs();
+      var mo = new MutationObserver(hideDesktopNavs);
+      mo.observe(document.documentElement, {childList:true, subtree:true});
+      setTimeout(function(){ mo.disconnect(); }, 5000);
+    }
+
     const slug = (location.pathname.replace(/^\//, '') || '').split('/')[0];
     const isHome = !slug;
     const isAbout = slug === 'About';
