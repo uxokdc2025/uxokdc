@@ -1,6 +1,24 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/Home.dc.html", "destination": "/", "permanent": true },
+    { "source": "/Home.dc",      "destination": "/", "permanent": true },
+    { "source": "/About.dc.html", "destination": "/About", "permanent": true },
+    { "source": "/About.dc",      "destination": "/About", "permanent": true },
+    { "source": "/Experience.dc.html", "destination": "/Experience", "permanent": true },
+    { "source": "/Experience.dc",      "destination": "/Experience", "permanent": true },
+    { "source": "/Work.dc.html", "destination": "/Work", "permanent": true },
+    { "source": "/Work.dc",      "destination": "/Work", "permanent": true },
+    { "source": "/TraderVault%20LM%20Case%20Study.dc.html", "destination": "/TraderVault%20LM%20Case%20Study", "permanent": true },
+    { "source": "/TintoProps%20Case%20Study.dc.html",       "destination": "/TintoProps%20Case%20Study", "permanent": true },
+    { "source": "/Construct%20AI%20Case%20Study.dc.html",   "destination": "/Construct%20AI%20Case%20Study", "permanent": true },
+    { "source": "/ULTRA%20Case%20Study.dc.html",            "destination": "/ULTRA%20Case%20Study", "permanent": true },
+    { "source": "/NESTRE%20Case%20Study.dc.html",           "destination": "/NESTRE%20Case%20Study", "permanent": true },
+    { "source": "/ULTA%20BEAUTY%20Case%20Study.dc.html",    "destination": "/ULTA%20BEAUTY%20Case%20Study", "permanent": true },
+    { "source": "/YELO%20Case%20Study.dc.html",             "destination": "/YELO%20Case%20Study", "permanent": true },
+    { "source": "/AI%20Genius%20Case%20Study.dc.html",      "destination": "/AI%20Genius%20Case%20Study", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/favicon.ico", "destination": "/favicon-dc.svg" }
   ],
