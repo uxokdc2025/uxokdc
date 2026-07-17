@@ -203,6 +203,19 @@ class Component extends DCLogic {
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
     this._onScroll();
+
+    // On mobile, set hero heights in real pixels so iOS toolbar animation can't change them mid-swipe
+    this._fixHero = () => {
+      if (window.innerWidth > 768) return;
+      const vh = window.innerHeight;
+      const hero = document.getElementById('top');
+      if (!hero) return;
+      hero.style.height = (vh * 3) + 'px';
+      const inner = hero.querySelector('[style*="position:sticky"]');
+      if (inner) { inner.style.height = vh + 'px'; inner.style.minHeight = '0'; }
+    };
+    this._fixHero();
+    window.addEventListener('resize', this._fixHero);
     this._measure = () => {
       const el = document.getElementById('dc-logo');
       const w = el ? el.offsetWidth : 320;
@@ -240,6 +253,7 @@ class Component extends DCLogic {
     window.removeEventListener('resize', this._measure);
     window.removeEventListener('scroll', this._parallax);
     window.removeEventListener('resize', this._parallax);
+    window.removeEventListener('resize', this._fixHero);
     clearTimeout(this._t);
   }
 

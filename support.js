@@ -86,10 +86,8 @@
       /* Hero overlay text position on home */
       [style*="top:130px;left:48px"]{top:88px!important;left:20px!important;right:20px!important;width:auto!important;}
 
-      /* iOS Safari: 100vh includes browser chrome — use dvh so sticky hero fills the visible viewport */
-      [style*="position:sticky"][style*="height:100vh"]{height:100dvh!important;min-height:0!important;}
-      /* Hero container: also use dvh so scroll length matches visible screen */
-      [style*="height:300vh"]{height:300dvh!important;}
+      /* Hero text overlay: ensure readable width on mobile */
+      [style*="top:88px"]{width:calc(100vw - 40px)!important;}
     }
   `;
 
@@ -124,9 +122,9 @@
     }
 
     if (isMobile && isHome) {
-      const nameBar = document.createElement('div');
-      nameBar.className = 'dc-mobile-name';
-      nameBar.innerHTML = '<span>david<b>.</b>cervantes</span>';
+      var nameBar = document.createElement('div');
+      nameBar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:center;padding:20px 20px;pointer-events:none;';
+      nameBar.innerHTML = '<span style="font-family:\'Google Sans\',sans-serif;font-weight:600;font-size:22px;color:#F2F1EE;text-shadow:0 1px 12px rgba(0,0,0,0.6);letter-spacing:-0.01em;">david<span style="color:#F54900">.</span>cervantes</span>';
       document.body.appendChild(nameBar);
     }
 
