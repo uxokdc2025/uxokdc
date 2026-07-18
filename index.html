@@ -40,16 +40,12 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 </nav>
 
 <!-- ── HERO ── -->
-<div id="top" style="position:relative;height:300vh;background:#0D0D0D" data-screen-label="Hero">
-  <div style="position:sticky;top:0;height:100vh;min-height:720px;overflow:hidden">
-  <div style="position:absolute;inset:0">{{ photoStack }}</div>
-  <div style="position:absolute;inset:0;background:rgba(13,13,13,0.38);pointer-events:none"></div>
+<div id="top" style="position:relative;height:100vh;min-height:600px;background:#0D0D0D;overflow:hidden" data-screen-label="Hero">
+  <img src="assets/david.cervantes.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
+  <div style="position:absolute;inset:0;background:rgba(13,13,13,0.42);pointer-events:none"></div>
 
-  <div style="position:absolute;top:130px;left:48px;pointer-events:none;animation:fadein 1.2s ease-out both;width:{{ sentWidth }}">
+  <div style="position:absolute;top:130px;left:48px;right:48px;pointer-events:none;max-width:700px">
     <div style="display:flex;flex-direction:column;gap:32px;align-items:flex-start">{{ sentenceLines }}</div>
-  </div>
-
-
   </div>
 </div>
 
@@ -180,7 +176,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showAvailability&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot;}}">
 class Component extends DCLogic {
-  state = { copied: false, scrolled: false, roleIndex: 0, logoW: 320 };
+  state = { copied: false, scrolled: false, logoW: 320 };
 
   static LINES = [
     { text: ["User advocate", "25+ years"], big: false },
@@ -192,30 +188,12 @@ class Component extends DCLogic {
   componentDidMount() {
     this._onScroll = () => {
       const hero = document.getElementById('top');
-      const vh = window.innerHeight;
-      const heroScrollable = hero ? Math.max(1, hero.offsetHeight - vh) : vh * 4.2;
-      const s = window.scrollY > heroScrollable - 40;
-      const progress = Math.min(1, Math.max(0, window.scrollY / heroScrollable));
-      const idx = Math.min(3, Math.floor(progress * 4 + 0.12));
-      if (s !== this.state.scrolled || idx !== this.state.roleIndex) {
-        this.setState({ scrolled: s, roleIndex: idx });
-      }
+      const heroH = hero ? hero.offsetHeight : window.innerHeight;
+      const s = window.scrollY > heroH - 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
     this._onScroll();
-
-    // On mobile, set hero heights in real pixels so iOS toolbar animation can't change them mid-swipe
-    this._fixHero = () => {
-      if (window.innerWidth > 768) return;
-      const vh = window.innerHeight;
-      const hero = document.getElementById('top');
-      if (!hero) return;
-      hero.style.height = (vh * 3) + 'px';
-      const inner = hero.querySelector('[style*="position:sticky"]');
-      if (inner) { inner.style.height = vh + 'px'; inner.style.minHeight = '0'; }
-    };
-    this._fixHero();
-    window.addEventListener('resize', this._fixHero);
     this._measure = () => {
       const el = document.getElementById('dc-logo');
       const w = el ? el.offsetWidth : 320;
@@ -253,28 +231,27 @@ class Component extends DCLogic {
     window.removeEventListener('resize', this._measure);
     window.removeEventListener('scroll', this._parallax);
     window.removeEventListener('resize', this._parallax);
-    window.removeEventListener('resize', this._fixHero);
     clearTimeout(this._t);
   }
 
   renderVals() {
     const scrolled = this.state.scrolled;
-    const idx = this.state.roleIndex;
-    const logoW = this.state.logoW;
-    const lineStyle = (big) => ({
+    const lineStyle = (big, delay) => ({
       fontFamily: 'var(--font-display)',
       fontWeight: 500,
-      fontSize: big ? 'clamp(35px,4.2vw,59px)' : 'clamp(22px,3.2vw,44px)',
-      lineHeight: 1.02,
+      fontSize: big ? 'clamp(32px,4.2vw,59px)' : 'clamp(20px,3.2vw,44px)',
+      lineHeight: 1.08,
       letterSpacing: '-0.025em',
       color: '#F2F1EE',
-      width: big ? 'max-content' : '100%',
+      width: '100%',
       maxWidth: big ? 'calc(100vw - 96px)' : 'none',
-      animation: 'rise 0.6s ease-out both'
+      animation: 'rise 0.9s ease-out both',
+      animationDelay: delay
     });
-    const sentenceLines = Component.LINES.slice(0, idx + 1).map((line, i) => {
+    const sentenceLines = Component.LINES.map((line, i) => {
+      const delay = (i * 0.28 + 0.15) + 's';
       if (line.big) {
-        return React.createElement('div', { key: i, style: lineStyle(true) },
+        return React.createElement('div', { key: i, style: lineStyle(true, delay) },
           "Innovation isn't being new",
           React.createElement('br'),
           "It's being ",
@@ -284,24 +261,10 @@ class Component extends DCLogic {
       const parts = Array.isArray(line.text)
         ? line.text.flatMap((t, j) => j ? [React.createElement('br', { key: 'b' + j }), t] : [t])
         : [line.text];
-      return React.createElement('div', { key: i, style: lineStyle(false) }, ...parts);
+      return React.createElement('div', { key: i, style: lineStyle(false, delay) }, ...parts);
     });
-    const photoIdx = Math.min(idx, 3);
-    const photoStack = [1, 2, 3, 4].map((n, i) => React.createElement('img', {
-      key: n,
-      src: 'assets/hero-' + n + '.jpg',
-      alt: '',
-      style: {
-        position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', opacity: photoIdx === i ? 1 : 0,
-        transform: i >= 2 ? 'scaleX(-1)' : 'none',
-        transition: 'opacity 600ms ease-out'
-      }
-    }));
     return {
       sentenceLines,
-      photoStack,
-      sentWidth: window.innerWidth <= 768 ? 'calc(100vw - 40px)' : (logoW + 100) + 'px',
       navBg: scrolled ? 'rgba(242,241,238,0.9)' : 'transparent',
       navBorder: scrolled ? '#D8D6D0' : 'transparent',
       navBlur: scrolled ? 'blur(12px)' : 'none',
