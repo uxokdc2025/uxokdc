@@ -26,6 +26,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 @media(max-width:768px){
   .dc-hero-img{object-position:center top}
   #top [style*="top:130px"]{left:20px!important;right:20px!important;}
+  #top [style*="gap:32px"]{gap:18px!important;}
 }
 </style>
 </helmet>
@@ -248,10 +249,11 @@ class Component extends DCLogic {
 
   renderVals() {
     const scrolled = this.state.scrolled;
+    const mob = window.innerWidth <= 768;
     const lineStyle = (big, delay) => ({
       fontFamily: 'var(--font-display)',
       fontWeight: 500,
-      fontSize: big ? 'clamp(44px,5.2vw,72px)' : 'clamp(28px,3.8vw,52px)',
+      fontSize: big ? (mob ? '36px' : 'clamp(44px,5.2vw,72px)') : (mob ? '22px' : 'clamp(28px,3.8vw,52px)'),
       lineHeight: 1.08,
       letterSpacing: '-0.025em',
       color: '#F2F1EE',
