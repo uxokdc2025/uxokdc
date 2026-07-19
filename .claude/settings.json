@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /workspace/uxokdc && node qa.spec.js --scope stop 2>&1",
+            "timeout": 30,
+            "statusMessage": "Running QA checks..."
+          }
+        ]
+      }
+    ]
+  }
+}
