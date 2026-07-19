@@ -15,10 +15,16 @@ html{scroll-behavior:smooth}
 body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-serif,system-ui,sans-serif}
 @keyframes rise{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
+/* Cat-section titles and rows animate on scroll */
+.cat-title{animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 5% entry 40%}
+.cat-row{animation:rise 0.65s ease-out both;animation-timeline:view();animation-range:entry 10% entry 50%}
+/* Thumbnail hover lift */
+.cat-row a>div,.cat-row figure>div{transition:transform 200ms ease-out,box-shadow 200ms ease-out}
+.cat-row a:hover>div,.cat-row figure:hover>div{transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,13,13,0.14)}
 /* Hero image positioning: left-anchor on desktop, center on mobile */
-.dc-hero-img{object-position:left center}
+.dc-hero-img{object-position:left top}
 @media(max-width:768px){
-  .dc-hero-img{object-position:center center}
+  .dc-hero-img{object-position:center top}
   #top [style*="top:130px"]{left:20px!important;right:20px!important;}
 }
 </style>
@@ -56,7 +62,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 </div>
 
 <!-- ── STATEMENT ── -->
-<div style="min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 6vw" data-screen-label="Statement">
+<div style="min-height:52vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:78px 6vw" data-screen-label="Statement">
   <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(44px,7.6vw,104px);line-height:1.08;letter-spacing:-0.03em;color:#3A3935;max-width:1180px;text-wrap:balance;animation:rise 0.8s ease-out both;animation-timeline:view();animation-range:entry 5% entry 45%">Now let's talk about the <span style="color:#F54900">work</span>.</h2>
 </div>
 
@@ -107,30 +113,30 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
       <div style="display:inline-flex;align-items:center;gap:10px;font:500 14px var(--font-sans);color:#0D0D0D"><span style="color:#F54900">→</span>NESTRE · Ulta Beauty · ULTRA · Yelo</div>
     </div>
     <div class="cat-row" id="cat2-row" style="display:flex;width:100%;box-sizing:border-box;flex-wrap:nowrap;overflow-x:auto;justify-content:safe center;gap:16px;padding:0 48px 12px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch">
-      <figure style="flex:none;margin:0;width:300px;scroll-snap-align:start">
+      <a href="NESTRE Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/nestre.webp" alt="NESTRE" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">NESTRE</figcaption>
-      </figure>
-      <figure style="flex:none;margin:0;width:300px;scroll-snap-align:start">
+      </a>
+      <a href="ULTA BEAUTY Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/ubmedia.webp" alt="Ulta Beauty" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">Ulta Beauty</figcaption>
-      </figure>
-      <figure style="flex:none;margin:0;width:300px;scroll-snap-align:start">
+      </a>
+      <a href="ULTRA Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/ultra.webp" alt="ULTRA" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">ULTRA</figcaption>
-      </figure>
-      <figure style="flex:none;margin:0;width:300px;scroll-snap-align:start">
+      </a>
+      <a href="YELO Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/yelo.webp" alt="Yelo" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">Yelo</figcaption>
-      </figure>
+      </a>
     </div>
   </div>
 </div>
@@ -245,7 +251,7 @@ class Component extends DCLogic {
     const lineStyle = (big, delay) => ({
       fontFamily: 'var(--font-display)',
       fontWeight: 500,
-      fontSize: big ? 'clamp(32px,4.2vw,59px)' : 'clamp(20px,3.2vw,44px)',
+      fontSize: big ? 'clamp(44px,5.2vw,72px)' : 'clamp(28px,3.8vw,52px)',
       lineHeight: 1.08,
       letterSpacing: '-0.025em',
       color: '#F2F1EE',

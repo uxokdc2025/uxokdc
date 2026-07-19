@@ -38,6 +38,16 @@
     x-import { display: none; }
     sc-if, sc-for { display: contents; }
 
+    /* ── Page-entry animation ── */
+    @keyframes pageEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    /* Soft entry on all pages */
+    x-dc.dc-ready > *:nth-child(1){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0s both}
+    x-dc.dc-ready > *:nth-child(2){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0.07s both}
+    x-dc.dc-ready > *:nth-child(3){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0.13s both}
+    x-dc.dc-ready > *:nth-child(4){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0.19s both}
+    x-dc.dc-ready > *:nth-child(5){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0.25s both}
+    x-dc.dc-ready > *:nth-child(n+6){animation:pageEnter 0.5s cubic-bezier(0.22,1,0.36,1) 0.30s both}
+
     /* ── Mobile bottom nav ── */
     .dc-mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;align-items:center;justify-content:center;gap:6px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:rgba(242,241,238,0.8);border-top:0.5px solid rgba(216,214,208,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
     .dc-mobile-nav a{font:500 13px var(--font-sans);color:#0D0D0D;text-decoration:none;border:0.5px solid rgba(216,214,208,0.6);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,0.5);white-space:nowrap;transition:color 150ms,border-color 150ms;}
@@ -61,6 +71,8 @@
       [style*="padding:40px"]{padding:16px!important;}
       [style*="min-height:96vh"]{padding:88px 20px 60px!important;min-height:auto!important;}
       [style*="min-height:80vh"]{padding-left:20px!important;padding-right:20px!important;}
+      [style*="min-height:52vh"]{padding-top:48px!important;padding-bottom:48px!important;padding-left:20px!important;padding-right:20px!important;}
+      [style*="padding:0 48px 12px"]{padding-left:16px!important;padding-right:16px!important;}
 
       /* Stack the two-column label | content layouts */
       [style*="grid-template-columns:230px 1fr"],
