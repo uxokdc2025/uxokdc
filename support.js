@@ -39,20 +39,17 @@
     sc-if, sc-for { display: contents; }
 
     /* ── Mobile bottom nav ── */
-    .dc-mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;align-items:center;justify-content:center;gap:6px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:rgba(242,241,238,0.6);border-top:0.5px solid rgba(216,214,208,0.5);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+    .dc-mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;align-items:center;justify-content:center;gap:6px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:rgba(242,241,238,0.8);border-top:0.5px solid rgba(216,214,208,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
     .dc-mobile-nav a{font:500 13px var(--font-sans);color:#0D0D0D;text-decoration:none;border:0.5px solid rgba(216,214,208,0.6);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,0.5);white-space:nowrap;transition:color 150ms,border-color 150ms;}
     .dc-mobile-nav a.dc-active{background:rgba(13,13,13,0.85);color:#F2F1EE;border-color:transparent;}
     .dc-mobile-nav a.dc-icon{width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .dc-mobile-name{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:18px 20px;pointer-events:none;}
-    .dc-mobile-name span{font-family:var(--font-display);font-weight:600;font-size:22px;color:#F2F1EE;text-shadow:0 1px 8px rgba(0,0,0,0.4);letter-spacing:-0.01em;}
-    .dc-mobile-name span b{color:#F54900;font-weight:600;}
-
     @media(max-width:768px){
       html{overflow-x:hidden;}
       body{overflow-x:hidden;padding-bottom:74px;}
 
-      /* Hide desktop top nav, show bottom nav */
-      nav{display:none!important;}
+      /* On mobile: show desktop nav but only the logo/name (hide pills + right icons) */
+      nav{display:flex!important;padding:14px 20px!important;}
+      nav > div{display:none!important;}
       .dc-mobile-nav{display:flex;}
 
       /* Side padding reduction on section wrappers */
@@ -83,28 +80,13 @@
       [style*="grid-template-columns:repeat(2,1fr)"],
       [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
 
-      /* Hero overlay text position on home */
-      [style*="top:130px;left:48px"]{top:88px!important;left:20px!important;right:20px!important;width:auto!important;}
-
-      /* Hero text overlay: ensure readable width on mobile */
-      [style*="top:88px"]{width:calc(100vw - 40px)!important;}
+      /* Hero overlay text: pull in side margins on mobile, keep top:130px */
+      [style*="top:130px"]{left:20px!important;right:20px!important;}
     }
   `;
 
   function injectMobileNav() {
     const isMobile = window.matchMedia('(max-width:768px)').matches;
-    if (isMobile) {
-      function hideDesktopNavs() {
-        document.querySelectorAll('nav').forEach(function(n) {
-          n.style.setProperty('display', 'none', 'important');
-        });
-      }
-      hideDesktopNavs();
-      var mo = new MutationObserver(hideDesktopNavs);
-      mo.observe(document.documentElement, {childList:true, subtree:true});
-      setTimeout(function(){ mo.disconnect(); }, 5000);
-    }
-
     const slug = (location.pathname.replace(/^\//, '') || '').split('/')[0];
     const isHome = !slug;
     const isAbout = slug === 'About';
@@ -119,13 +101,6 @@
     }
     function icon(href, svg, label, external) {
       return `<a href="${href}"${external ? ' target="_blank" rel="noopener"' : ''} title="${label}" class="dc-icon">${svg}</a>`;
-    }
-
-    if (isMobile && isHome) {
-      var nameBar = document.createElement('div');
-      nameBar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:center;padding:20px 20px;pointer-events:none;';
-      nameBar.innerHTML = '<span style="font-family:\'Google Sans\',sans-serif;font-weight:600;font-size:22px;color:#F2F1EE;text-shadow:0 1px 12px rgba(0,0,0,0.6);letter-spacing:-0.01em;">david<span style="color:#F54900">.</span>cervantes</span>';
-      document.body.appendChild(nameBar);
     }
 
     const nav = document.createElement('div');

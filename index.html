@@ -19,7 +19,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 .dc-hero-img{object-position:left center}
 @media(max-width:768px){
   .dc-hero-img{object-position:center center}
-  #top [style*="top:130px"]{top:88px!important;left:20px!important;right:20px!important;}
+  #top [style*="top:130px"]{left:20px!important;right:20px!important;}
 }
 </style>
 </helmet>
@@ -187,8 +187,8 @@ class Component extends DCLogic {
   static LINES = [
     { text: ["User advocate", "25+ years"], big: false },
     { text: ["interface design to", "AI-centric design"], big: false },
-    { text: "end-to-end: strategy, research, design, and code", big: false },
-    { text: null, big: true } // final line rendered with orange accent below
+    { text: ["end-to-end:", "strategy, research,", "design, and code"], big: false },
+    { text: null, big: true }
   ];
 
   componentDidMount() {
@@ -258,10 +258,14 @@ class Component extends DCLogic {
       const delay = (i * 0.28 + 0.15) + 's';
       if (line.big) {
         return React.createElement('div', { key: i, style: lineStyle(true, delay) },
-          "Innovation isn't being new",
+          "Innovation isn't",
+          React.createElement('br'),
+          "being new.",
           React.createElement('br'),
           "It's being ",
-          React.createElement('span', { style: { color: '#F54900' } }, 'relevant — right now')
+          React.createElement('span', { style: { color: '#F54900' } }, 'relevant'),
+          React.createElement('br'),
+          React.createElement('span', { style: { color: '#F54900' } }, '— right now')
         );
       }
       const parts = Array.isArray(line.text)
