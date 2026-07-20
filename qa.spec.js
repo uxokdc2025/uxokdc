@@ -103,8 +103,8 @@ function checkSpacing() {
     !!stmt && (stmt.getAttribute('style') || '').includes('78px'));
   check('Statement min-height = 52vh',
     !!stmt && (stmt.getAttribute('style') || '').includes('52vh'));
-  check('Cat-row has 20px inline spacer div (first child)',
-    (doc.querySelector('#cat1-row div[style*="width:20px"]') !== null));
+  check('Cat-row first card has 20px left margin',
+    (doc.querySelector('#cat1-row a[style*="margin:0 0 0 20px"]') !== null));
 }
 
 function checkAnimations() {
