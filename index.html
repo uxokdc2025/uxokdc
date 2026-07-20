@@ -21,8 +21,8 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 /* Thumbnail hover lift */
 .cat-row a>div,.cat-row figure>div{transition:transform 200ms ease-out,box-shadow 200ms ease-out}
 .cat-row a:hover>div,.cat-row figure:hover>div{transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,13,13,0.14)}
-/* Hero image positioning: left-anchor on desktop, center on mobile */
-.dc-hero-img{object-position:left top}
+/* Hero image: face on right (desktop) so left-side text doesn't cover it; center on mobile */
+.dc-hero-img{object-position:right top}
 @media(max-width:768px){
   .dc-hero-img{object-position:center top}
   #top [style*="top:130px"]{left:20px!important;right:20px!important;}
@@ -253,7 +253,7 @@ class Component extends DCLogic {
     const lineStyle = (big, delay) => ({
       fontFamily: 'var(--font-display)',
       fontWeight: 500,
-      fontSize: big ? (mob ? '36px' : 'clamp(44px,5.2vw,72px)') : (mob ? '22px' : 'clamp(28px,3.8vw,52px)'),
+      fontSize: big ? (mob ? '42px' : 'clamp(44px,5.2vw,72px)') : (mob ? '26px' : 'clamp(28px,3.8vw,52px)'),
       lineHeight: 1.08,
       letterSpacing: '-0.025em',
       color: '#F2F1EE',

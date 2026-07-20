@@ -60,6 +60,8 @@
       /* On mobile: show desktop nav but only the logo/name (hide pills + right icons) */
       nav{display:flex!important;padding:14px 20px!important;}
       nav > div{display:none!important;}
+      /* Wordmark: shrink to fit mobile nav */
+      #dc-logo{font-size:20px!important;letter-spacing:-0.01em!important;}
       .dc-mobile-nav{display:flex;}
 
       /* Side padding reduction on section wrappers */

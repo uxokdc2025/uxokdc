@@ -54,16 +54,16 @@ function checkHero() {
   const heroImg = doc.querySelector('.dc-hero-img');
   check('Hero image src = david.cervantes.jpg',
     !!heroImg && heroImg.getAttribute('src') === 'assets/david.cervantes.jpg');
-  check('Hero image object-position: left top (desktop)',
-    helmetStyle.includes('object-position:left top'));
+  check('Hero image object-position: right top (desktop)',
+    helmetStyle.includes('object-position:right top'));
   check('Hero image object-position: center top (mobile)',
     helmetStyle.includes('object-position:center top'));
   check('Hero text overlay at top:130px',
     !!doc.querySelector('#top [style*="top:130px"]'));
-  check('Mobile small lines explicit 22px',
-    componentSrc.includes("mob ? '22px'"));
-  check('Mobile big quote explicit 36px',
-    componentSrc.includes("mob ? '36px'"));
+  check('Mobile small lines explicit 26px',
+    componentSrc.includes("mob ? '26px'"));
+  check('Mobile big quote explicit 42px',
+    componentSrc.includes("mob ? '42px'"));
   check('Mobile hero gap reduced to 18px',
     helmetStyle.includes('gap:18px'));
 }
