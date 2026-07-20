@@ -94,8 +94,8 @@
       [style*="grid-template-columns:repeat(2,1fr)"],
       [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
 
-      /* Hero overlay text: pull in side margins on mobile, keep top:130px */
-      [style*="top:130px"]{left:20px!important;right:20px!important;}
+      /* Hero overlay text: pull in side margins on mobile, push down for nav clearance */
+      [style*="top:130px"]{top:160px!important;left:20px!important;right:20px!important;}
     }
   `;
 

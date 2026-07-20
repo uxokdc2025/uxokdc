@@ -283,9 +283,9 @@ class Component extends DCLogic {
     });
     return {
       sentenceLines,
-      navBg: scrolled ? 'rgba(242,241,238,0.9)' : 'transparent',
+      navBg: scrolled ? 'rgba(242,241,238,0.9)' : (mob ? 'rgba(13,13,13,0.35)' : 'transparent'),
       navBorder: scrolled ? '#D8D6D0' : 'transparent',
-      navBlur: scrolled ? 'blur(12px)' : 'none',
+      navBlur: scrolled ? 'blur(12px)' : (mob ? 'blur(6px)' : 'none'),
       navSide: scrolled ? '#0D0D0D' : '#F2F1EE',
       navBtnBorder: scrolled ? '#D8D6D0' : 'rgba(242,241,238,0.45)',
       wordmarkOpacity: scrolled ? 0 : 1,
