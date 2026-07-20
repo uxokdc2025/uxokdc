@@ -97,6 +97,14 @@
       /* Hero overlay text: pull in side margins on mobile, push down for nav clearance */
       [style*="top:130px"]{top:160px!important;left:20px!important;right:20px!important;}
     }
+
+    /* ── Nav scroll state ── */
+    nav.dc-nav-scrolled{background:rgba(242,241,238,0.9)!important;border-bottom-color:#D8D6D0!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;}
+    nav.dc-nav-scrolled #dc-logo{color:#0D0D0D!important;}
+    nav.dc-nav-scrolled .dc-nav-right a{color:#0D0D0D!important;border-color:#D8D6D0!important;}
+    @media(max-width:768px){
+      nav:not(.dc-nav-scrolled){background:rgba(13,13,13,0.35)!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important;}
+    }
   `;
 
   function injectMobileNav() {
