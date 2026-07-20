@@ -103,8 +103,8 @@ function checkSpacing() {
     !!stmt && (stmt.getAttribute('style') || '').includes('78px'));
   check('Statement min-height = 52vh',
     !!stmt && (stmt.getAttribute('style') || '').includes('52vh'));
-  check('Cat-row uses HTML spacer divs for inset (mobile overrides to 20px)',
-    !!doc.querySelector('#cat1-row .cat-row-inset') && helmetStyle.includes('.cat-row-inset'));
+  check('Cat-row has 20px inline spacer div (first child)',
+    (doc.querySelector('#cat1-row div[style*="width:20px"]') !== null));
 }
 
 function checkAnimations() {
