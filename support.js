@@ -74,8 +74,6 @@
       [style*="min-height:96vh"]{padding:88px 20px 60px!important;min-height:auto!important;}
       [style*="min-height:80vh"]{padding-left:20px!important;padding-right:20px!important;}
       [style*="min-height:52vh"]{padding-top:48px!important;padding-bottom:48px!important;padding-left:20px!important;padding-right:20px!important;}
-      [style*="padding:0 48px 12px"]{padding-left:20px!important;padding-right:20px!important;}
-
       /* Stack the two-column label | content layouts */
       [style*="grid-template-columns:230px 1fr"],
       [style*="grid-template-columns:200px 1fr"],
