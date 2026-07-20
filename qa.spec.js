@@ -103,8 +103,8 @@ function checkSpacing() {
     !!stmt && (stmt.getAttribute('style') || '').includes('78px'));
   check('Statement min-height = 52vh',
     !!stmt && (stmt.getAttribute('style') || '').includes('52vh'));
-  check('Mobile CSS: cat-row padding fix (0 48px 12px)',
-    DS_CSS.includes('padding:0 48px 12px'));
+  check('Mobile CSS: cat-row left padding = 20px (matches nav)',
+    DS_CSS.includes('padding-left:20px') && DS_CSS.includes('padding:0 48px 12px'));
 }
 
 function checkAnimations() {
