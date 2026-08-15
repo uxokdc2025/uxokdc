@@ -32,7 +32,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 </helmet>
 
 <!-- ── STICKY NAV ── -->
-<nav id="dc-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 48px;background:transparent;border-bottom:0.5px solid transparent;backdrop-filter:none;transition:background 250ms ease-out,border-color 250ms ease-out,backdrop-filter 250ms ease-out">
+<nav id="dc-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 48px;background:rgba(13,13,13,0.42);border-bottom:0.5px solid rgba(255,255,255,0.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background 250ms ease-out,border-color 250ms ease-out,backdrop-filter 250ms ease-out">
   <a href="#top" style="display:flex;align-items:center;gap:16px;text-decoration:none;justify-self:start">
     <div style="width:44px;height:44px;flex:none;border-radius:12px;background:#ffffff;border:0.5px solid #D8D6D0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:16px;color:#0D0D0D">d<span style="color:#F54900">c</span></div>
     <span id="dc-logo" style="font-family:var(--font-display);font-weight:600;font-size:36px;color:#F2F1EE;transition:color 250ms ease-out,opacity 250ms ease-out,max-width 250ms ease-out;opacity:1;max-width:520px;overflow:hidden;white-space:nowrap">david<span style="color:#F54900">.</span>cervantes</span>
@@ -57,8 +57,8 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
   <img src="assets/david.cervantes.jpg" alt="" class="dc-hero-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
   <div style="position:absolute;inset:0;background:rgba(13,13,13,0.42);pointer-events:none"></div>
 
-  <div style="position:absolute;top:130px;left:48px;right:48px;pointer-events:none;max-width:700px">
-    <div style="display:flex;flex-direction:column;gap:32px;align-items:flex-start">{{ sentenceLines }}</div>
+  <div class="dc-hero-copy" style="position:absolute;top:280px;left:248px;right:48px;pointer-events:none;max-width:430px;will-change:transform">
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">{{ sentenceLines }}</div>
   </div>
 </div>
 
@@ -71,12 +71,12 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 <div class="cat-sec" id="cat1" style="position:relative;padding:13vh 0 11vh" data-screen-label="Category — AI">
   <div style="display:contents">
     <div class="cat-title" style="text-align:center;padding:0 6vw;margin-bottom:8vh">
-      <h3 style="margin:0 0 18px;font-family:var(--font-display);font-weight:600;font-size:clamp(40px,5.6vw,80px);line-height:1.0;letter-spacing:-0.025em;color:#0D0D0D">AI, leading the way</h3>
-      <p style="margin:0 auto 16px;font:400 clamp(15px,1.6vw,18px)/1.6 var(--font-sans);color:#8A8A85;max-width:520px;text-wrap:balance">The products I'm building now — conversational and Reactive AI, designed around intent and built to ship.</p>
+      <h3 style="margin:0 0 18px;font-family:var(--font-display);font-weight:600;font-size:clamp(40px,5.6vw,80px);line-height:1.0;letter-spacing:-0.025em;color:#0D0D0D">AI, on purpose.</h3>
+      <p style="margin:0 auto 16px;font:400 clamp(15px,1.6vw,18px)/1.6 var(--font-sans);color:#8A8A85;max-width:520px;text-wrap:balance">Conversational and Reactive AI, designed around what the user is trying to do — and built to ship.</p>
       <div style="display:inline-flex;align-items:center;gap:10px;font:500 14px var(--font-sans);color:#0D0D0D"><span style="color:#F54900">→</span>TraderVault LM · TintoProps · Construct AI · Attuno</div>
     </div>
-    <div class="cat-row" id="cat1-row" style="display:flex;width:100%;box-sizing:border-box;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:16px;padding:0 0 12px;scroll-snap-type:x mandatory;scroll-padding-left:20px;-webkit-overflow-scrolling:touch">
-      <a href="TraderVault LM Case Study.html" style="flex:none;margin:0 0 0 20px;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
+    <div class="cat-row" id="cat1-row" style="display:flex;width:100%;box-sizing:border-box;flex-wrap:nowrap;overflow-x:auto;justify-content:safe center;gap:16px;padding:0 20px 12px;scroll-snap-type:x mandatory;scroll-padding-inline:20px;-webkit-overflow-scrolling:touch">
+      <a href="TraderVault LM Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/TraderVault_thumb.jpg" alt="TraderVault LM" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
@@ -94,7 +94,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">Construct AI</figcaption>
       </a>
-      <figure style="flex:none;margin:0 20px 0 0;width:300px;scroll-snap-align:start;position:relative">
+      <figure style="flex:none;margin:0;width:300px;scroll-snap-align:start;position:relative">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D;position:relative">
           <img src="assets/Attuno_thumb.jpg" alt="Attuno Learning" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
           <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font:500 13px var(--font-sans);color:#fff;background:rgba(13,13,13,0.6);padding:4px 12px;border-radius:20px;white-space:nowrap">coming soon</span>
@@ -109,12 +109,12 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
 <div class="cat-sec" id="cat2" style="position:relative;padding:13vh 0 11vh" data-screen-label="Category — Technology">
   <div style="display:contents">
     <div class="cat-title" style="text-align:center;padding:0 6vw;margin-bottom:8vh">
-      <h3 style="margin:0 0 18px;font-family:var(--font-display);font-weight:600;font-size:clamp(40px,5.6vw,80px);line-height:1.0;letter-spacing:-0.025em;color:#0D0D0D">Technology that earns its keep</h3>
-      <p style="margin:0 auto 16px;font:400 clamp(15px,1.6vw,18px)/1.6 var(--font-sans);color:#8A8A85;max-width:520px">SaaS platforms and apps where complex systems become something people actually want to use.</p>
+      <h3 style="margin:0 0 18px;font-family:var(--font-display);font-weight:600;font-size:clamp(40px,5.6vw,80px);line-height:1.0;letter-spacing:-0.025em;color:#0D0D0D">Technology that earns its keep.</h3>
+      <p style="margin:0 auto 16px;font:400 clamp(15px,1.6vw,18px)/1.6 var(--font-sans);color:#8A8A85;max-width:520px">Two decades of SaaS, retail media, and mobile — complex systems turned into something a real team uses every day.</p>
       <div style="display:inline-flex;align-items:center;gap:10px;font:500 14px var(--font-sans);color:#0D0D0D"><span style="color:#F54900">→</span>NESTRE · Ulta Beauty · ULTRA · Yelo</div>
     </div>
-    <div class="cat-row" id="cat2-row" style="display:flex;width:100%;box-sizing:border-box;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:16px;padding:0 0 12px;scroll-snap-type:x mandatory;scroll-padding-left:20px;-webkit-overflow-scrolling:touch">
-      <a href="NESTRE Case Study.html" style="flex:none;margin:0 0 0 20px;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
+    <div class="cat-row" id="cat2-row" style="display:flex;width:100%;box-sizing:border-box;flex-wrap:nowrap;overflow-x:auto;justify-content:safe center;gap:16px;padding:0 20px 12px;scroll-snap-type:x mandatory;scroll-padding-inline:20px;-webkit-overflow-scrolling:touch">
+      <a href="NESTRE Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/nestre.webp" alt="NESTRE" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
@@ -132,7 +132,7 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
         </div>
         <figcaption style="margin-top:10px;font:500 13px var(--font-sans);color:#0D0D0D">ULTRA</figcaption>
       </a>
-      <a href="YELO Case Study.html" style="flex:none;margin:0 20px 0 0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
+      <a href="YELO Case Study.html" style="flex:none;margin:0;width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block">
         <div style="width:100%;height:210px;border-radius:10px;border:0.5px solid #D8D6D0;overflow:hidden;background:#0D0D0D">
           <img src="assets/yelo.webp" alt="Yelo" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
         </div>
@@ -152,10 +152,10 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
       <div style="font-family:var(--font-display);font-weight:600;font-size:clamp(40px,8.8vw,120px);line-height:1.0;letter-spacing:-0.03em;color:#F2F1EE;margin-bottom:64px">user focus <span style="color:#F54900">+</span><br>sharp instincts</div>
     </div>
     <div style="max-width:760px;border-top:0.5px solid rgba(242,241,238,0.35)">
-      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I advocate for the user in every decision, from discovery to ship.</p></div>
-      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I care about the craft, from concept to final product.</p></div>
-      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I build design systems that keep products consistent as they scale.</p></div>
-      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I align your goals with my experience to make the right design decisions.</p></div>
+      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I lead with the user, not the model.</p></div>
+      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I design for trust: what a system explains, when it says "I'm not sure," and when it hands back to a human.</p></div>
+      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I ship — working prototypes, not slideware.</p></div>
+      <div style="display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-bottom:0.5px solid rgba(242,241,238,0.35);animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 55%"><span style="color:#F54900;flex:none;margin-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#F2F1EE">I build design systems that hold as products scale.</p></div>
     </div>
     <div style="margin-top:56px;pointer-events:auto;display:inline-block">
       <a href="/About" style="display:inline-flex;align-items:center;font:500 15px var(--font-sans);color:#F2F1EE;text-decoration:none;border:1px solid rgba(242,241,238,0.5);border-radius:999px;padding:12px 28px;transition:border-color 150ms ease-out" onmouseover="this.style.borderColor='#F2F1EE'" onmouseout="this.style.borderColor='rgba(242,241,238,0.5)'">Learn more about me</a>
@@ -192,10 +192,8 @@ class Component extends DCLogic {
   state = { copied: false };
 
   static LINES = [
-    { text: ["User advocate", "25+ years"], big: false },
-    { text: ["interface design to", "AI-centric design"], big: false },
-    { text: ["end-to-end:", "strategy, research,", "design, and code"], big: false },
-    { text: null, big: true }
+    { text: ["AI-native", "products.", "End to end."], big: true },
+    { text: "AI product designer + strategist. 25 years shipping. Now designing conversational and Reactive AI — from first question to working code.", big: false }
   ];
 
   componentDidMount() {
@@ -241,34 +239,24 @@ class Component extends DCLogic {
     const mob = window.innerWidth <= 768;
     const lineStyle = (big, delay) => ({
       fontFamily: 'var(--font-display)',
-      fontWeight: 500,
-      fontSize: big ? (mob ? '42px' : 'clamp(44px,5.2vw,72px)') : (mob ? '26px' : 'clamp(28px,3.8vw,52px)'),
-      lineHeight: 1.08,
-      letterSpacing: '-0.025em',
+      fontWeight: big ? 600 : 400,
+      fontSize: big ? (mob ? '38px' : 'clamp(52px,6.4vw,88px)') : (mob ? '18px' : 'clamp(20px,1.8vw,24px)'),
+      lineHeight: big ? 1.02 : 1.55,
+      letterSpacing: big ? '-0.03em' : '-0.005em',
       color: '#F2F1EE',
       width: '100%',
-      maxWidth: big ? 'calc(100vw - 96px)' : 'none',
+      maxWidth: mob ? '100%' : (big ? 'calc(100vw - 96px)' : '620px'),
+      whiteSpace: big ? 'nowrap' : 'normal',
       animation: 'rise 0.9s ease-out both',
-      animationDelay: delay
+      animationDelay: delay,
+      marginTop: big ? '0' : '8px'
     });
     const sentenceLines = Component.LINES.map((line, i) => {
-      const delay = (i * 0.28 + 0.15) + 's';
-      if (line.big) {
-        return React.createElement('div', { key: i, style: lineStyle(true, delay) },
-          "Innovation isn't",
-          React.createElement('br'),
-          "being new.",
-          React.createElement('br'),
-          "It's being ",
-          React.createElement('span', { style: { color: '#F54900' } }, 'relevant'),
-          React.createElement('br'),
-          React.createElement('span', { style: { color: '#F54900' } }, '— right now')
-        );
-      }
+      const delay = (i * 0.32 + 0.15) + 's';
       const parts = Array.isArray(line.text)
         ? line.text.flatMap((t, j) => j ? [React.createElement('br', { key: 'b' + j }), t] : [t])
         : [line.text];
-      return React.createElement('div', { key: i, style: lineStyle(false, delay) }, ...parts);
+      return React.createElement('div', { key: i, style: lineStyle(line.big, delay) }, ...parts);
     });
     return {
       sentenceLines,

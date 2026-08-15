@@ -103,6 +103,12 @@
     @media(max-width:768px){
       nav:not(.dc-nav-scrolled){background:rgba(13,13,13,0.35)!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important;}
     }
+    /* ── Nav consistency: single font family across pills (2026-08-15) ── */
+    nav > div > a{font-family:var(--font-display)!important;}
+    /* Hero copy — narrow text box on mobile so title + body stop before the face on the right */
+    @media(max-width:768px){
+      .dc-hero-copy{right:auto!important;left:24px!important;max-width:225px!important;width:225px!important;top:220px!important;}
+    }
   `;
 
   function injectMobileNav() {
