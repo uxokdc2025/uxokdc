@@ -9,14 +9,14 @@ const HANDLE = '@uxokdc';
 const PAGES = {
   'index.html': {
     slug: '/', og: 'home.png', type: 'website',
-    title: 'David Cervantes — AI Product Designer & Strategist',
+    title: 'David Cervantes — AI Product Leader, Designer & Strategist',
     desc: '25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.',
     ld: 'person',
   },
   'About.html': {
     slug: '/About', og: 'home.png', type: 'profile',
-    title: 'About — David Cervantes · AI Product Designer & Strategist',
-    desc: 'Product designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native. Available for select engagements.',
+    title: 'About — David Cervantes · AI Product Leader, Designer & Strategist',
+    desc: 'AI product leader, designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native. Available for select engagements.',
     ld: 'skip', // keeps its richer hand-written Person JSON-LD
   },
   'Experience.html': {
@@ -34,7 +34,7 @@ const PAGES = {
   'Portfolio Explorations.html': {
     slug: '/Portfolio%20Explorations', og: 'home.png', type: 'website',
     title: 'Portfolio Explorations — David Cervantes',
-    desc: 'Visual explorations, interface studies, and design experiments by David Cervantes — AI product designer & strategist.',
+    desc: 'Visual explorations, interface studies, and design experiments by David Cervantes — AI product leader, designer & strategist.',
     ld: 'collection',
   },
   'TraderVault LM Case Study.html': {
@@ -107,7 +107,7 @@ function jsonld(p) {
   if (p.ld === 'person') {
     return {
       '@context': 'https://schema.org', '@type': 'Person', name: AUTHOR, url: HOST,
-      image: OGDIR + 'home.png', jobTitle: 'AI Product Designer & Strategist',
+      image: OGDIR + 'home.png', jobTitle: 'AI Product Leader, Designer & Strategist',
       description: p.desc, email: 'uxokdc@gmail.com',
       sameAs: ['https://www.linkedin.com/in/davidcervantes/', HOST],
       knowsAbout: ['UX Design', 'Product Strategy', 'AI Product Design', 'Design Systems', 'User Research', 'Interaction Design', 'Conversational AI', 'Reactive AI'],

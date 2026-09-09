@@ -169,13 +169,13 @@
 
   const PAGE_META = {
     'index.html': {
-      title: 'David Cervantes — AI Product Designer & Strategist',
+      title: 'David Cervantes — AI Product Leader, Designer & Strategist',
       description: '25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.',
       type: 'website',
     },
     'About.html': {
       title: 'About — David Cervantes',
-      description: 'Product designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native.',
+      description: 'AI product leader, designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native.',
       type: 'profile',
     },
     'Experience.html': {
@@ -308,7 +308,7 @@
       '@type': 'Person',
       name: AUTHOR,
       url: SITE_ORIGIN,
-      jobTitle: 'AI Product Designer & Strategist',
+      jobTitle: 'AI Product Leader, Designer & Strategist',
       description: '25 years designing digital products — from interfaces to AI-native systems.',
       email: 'uxokdc@gmail.com',
       sameAs: [
@@ -328,7 +328,7 @@
       name: 'David Cervantes — Portfolio',
       url: SITE_ORIGIN,
       author: { '@type': 'Person', name: AUTHOR },
-      description: 'Portfolio of David Cervantes, AI product designer and strategist.',
+      description: 'Portfolio of David Cervantes, AI product leader, designer and strategist.',
     };
 
     const breadcrumbLD = {
