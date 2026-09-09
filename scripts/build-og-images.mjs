@@ -30,6 +30,10 @@ const CARDS = [
     desc: 'Freelance intelligence platform — AI for project-based work.' },
   { slug: 'intent-centered-design', kind: 'article', eyebrow: 'METHOD', title: 'Intent-Centered<br>Design',
     desc: 'Designing AI products around what the user is trying to do — not the model, not a chat box.' },
+  { slug: 'reactive-ai', kind: 'article', eyebrow: 'METHOD', title: 'Reactive AI',
+    desc: 'AI that responds to what’s happening — surfacing the right thing at the right moment, instead of waiting to be asked.' },
+  { slug: 'conversational-flow-mapping', kind: 'article', eyebrow: 'METHOD', title: 'Conversational<br>Flow Mapping',
+    desc: 'Designing an AI conversation like a product flow — intents, turns, and hand-offs, before the prompt.' },
 ];
 
 const wordmark = (light) => `

@@ -45,6 +45,22 @@ const PAGES = {
     keywords: 'Intent-Centered Design, AI product design, conversational AI, Reactive AI, UX method, David Cervantes',
     term: ['Intent-Centered Design', "A method of designing AI products around the user's intent rather than the model's capabilities or a generic conversation — surfacing the right capability at the moment the user forms a goal, and building trust and human hand-off into the design."],
   },
+  'Reactive-AI.html': {
+    slug: '/Reactive-AI', og: 'reactive-ai.png', type: 'article',
+    title: 'Reactive AI — David Cervantes',
+    desc: 'Reactive AI: AI that responds to the state of the work — surfacing the right insight at the moment it matters, instead of waiting to be asked. By David Cervantes.',
+    ld: 'article',
+    keywords: 'Reactive AI, AI product design, ambient AI, decision support, conversational AI, David Cervantes',
+    term: ['Reactive AI', "AI that responds to the state of the work — surfacing an insight, warning, or option the instant it becomes relevant, without the user having to ask, while staying explainable and correctable."],
+  },
+  'Conversational-Flow-Mapping.html': {
+    slug: '/Conversational-Flow-Mapping', og: 'conversational-flow-mapping.png', type: 'article',
+    title: 'Conversational Flow Mapping — David Cervantes',
+    desc: 'Conversational Flow Mapping: designing an AI conversation like a product flow — mapping intents, turns, and hand-offs before writing a prompt. By David Cervantes.',
+    ld: 'article',
+    keywords: 'Conversational Flow Mapping, conversation design, AI UX, chatbot design, intent mapping, David Cervantes',
+    term: ['Conversational Flow Mapping', "Designing an AI conversation the way you design a product flow — mapping the user's intents, the turns a conversation can take, the recovery points, and where it hands to a human, before writing the prompt."],
+  },
   'TraderVault LM Case Study.html': {
     slug: '/TraderVault%20LM%20Case%20Study', og: 'tradervault.png', type: 'article',
     title: 'TraderVault LM — AI Trading Intelligence | David Cervantes',
