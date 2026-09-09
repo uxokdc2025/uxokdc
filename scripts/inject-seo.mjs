@@ -37,6 +37,14 @@ const PAGES = {
     desc: 'Visual explorations, interface studies, and design experiments by David Cervantes — AI product leader, designer & strategist.',
     ld: 'collection',
   },
+  'Intent-Centered-Design.html': {
+    slug: '/Intent-Centered-Design', og: 'intent-centered-design.png', type: 'article',
+    title: 'Intent-Centered Design — David Cervantes',
+    desc: 'Intent-Centered Design: a method for designing AI products around what the user is trying to do — not around the model or a chat box. By David Cervantes.',
+    ld: 'article',
+    keywords: 'Intent-Centered Design, AI product design, conversational AI, Reactive AI, UX method, David Cervantes',
+    term: ['Intent-Centered Design', "A method of designing AI products around the user's intent rather than the model's capabilities or a generic conversation — surfacing the right capability at the moment the user forms a goal, and building trust and human hand-off into the design."],
+  },
   'TraderVault LM Case Study.html': {
     slug: '/TraderVault%20LM%20Case%20Study', og: 'tradervault.png', type: 'article',
     title: 'TraderVault LM — AI Trading Intelligence | David Cervantes',
@@ -148,6 +156,18 @@ function jsonld(p) {
   }
   if (p.ld === 'collection') {
     return { '@context': 'https://schema.org', '@type': 'CollectionPage', name: p.title, url, description: p.desc, about: { '@id': PERSON_ID }, mainEntity: { '@id': PERSON_ID }, isPartOf: { '@id': HOST + '/#website' } };
+  }
+  if (p.ld === 'article') {
+    // Article + DefinedTerm: lets Google/AI cite David as the source that defines the term.
+    const graph = [
+      { '@type': 'Article', '@id': url + '#article', headline: p.title, name: p.title, url, description: p.desc, image: OGDIR + p.og, datePublished: '2026-09-09', dateModified: '2026-09-09', inLanguage: 'en', keywords: p.keywords, author: { '@id': PERSON_ID }, publisher: { '@id': PERSON_ID }, isPartOf: { '@id': HOST + '/#website' }, mainEntityOfPage: url },
+      { '@type': 'Person', '@id': PERSON_ID, name: AUTHOR, url: HOST, jobTitle: JOBTITLE, sameAs: SAMEAS },
+    ];
+    if (p.term) {
+      graph[0].about = { '@id': url + '#term' };
+      graph.push({ '@type': 'DefinedTerm', '@id': url + '#term', name: p.term[0], description: p.term[1], inDefinedTermSet: HOST });
+    }
+    return { '@context': 'https://schema.org', '@graph': graph };
   }
   // case study
   return {

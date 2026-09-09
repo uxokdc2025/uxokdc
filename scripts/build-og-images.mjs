@@ -28,6 +28,8 @@ const CARDS = [
     desc: 'A ride-hailing network built only for campus.' },
   { slug: 'aigenius', eyebrow: 'CASE STUDY', title: 'AI Genius', img: 'giggenius.webp',
     desc: 'Freelance intelligence platform — AI for project-based work.' },
+  { slug: 'intent-centered-design', kind: 'article', eyebrow: 'METHOD', title: 'Intent-Centered<br>Design',
+    desc: 'Designing AI products around what the user is trying to do — not the model, not a chat box.' },
 ];
 
 const wordmark = (light) => `
@@ -74,7 +76,23 @@ function cardCase(c) {
   </section>`;
 }
 
-const cardsHtml = CARDS.map(c => c.kind === 'home' ? cardHome(c) : cardCase(c)).join('\n');
+function cardArticle(c) {
+  return `
+  <section id="card-${c.slug}" class="card">
+    <div style="position:absolute;inset:0;padding:76px 80px 64px;display:flex;flex-direction:column;justify-content:space-between;z-index:2">
+      ${wordmark(true)}
+      <div style="max-width:900px">
+        <div style="font-weight:600;font-size:19px;letter-spacing:0.18em;color:${ORANGE};margin-bottom:22px">${c.eyebrow}</div>
+        <h1 style="margin:0 0 26px;font-weight:700;font-size:88px;line-height:0.98;letter-spacing:-0.03em;color:${INK}">${c.title}</h1>
+        <p style="margin:0;font-weight:400;font-size:28px;line-height:1.4;color:${MUTED};max-width:820px">${c.desc}</p>
+      </div>
+      <div style="font-weight:500;font-size:20px;color:${MUTED}">Essay · David Cervantes · uxokdc.com</div>
+    </div>
+    <div style="position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;border:64px solid ${ORANGE};opacity:0.10"></div>
+  </section>`;
+}
+
+const cardsHtml = CARDS.map(c => c.kind === 'home' ? cardHome(c) : c.kind === 'article' ? cardArticle(c) : cardCase(c)).join('\n');
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
