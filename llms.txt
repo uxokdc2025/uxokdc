@@ -1,0 +1,30 @@
+# David Cervantes — AI Product Designer & Strategist
+
+> David Cervantes is an AI product designer and strategist with 25 years of experience turning complex software into products people actually use. He designs conversational and Reactive AI systems end-to-end — from first user question to working code — across fintech, healthcare, retail media, real estate, construction, and consumer apps. Based in Orlando, FL. Available for select contract engagements.
+
+## About
+
+- [About David Cervantes](https://www.uxokdc.com/About): Background, approach, and areas of expertise — product strategy, UX research, design systems, Intent-Centered Design, and AI-native product design.
+- [Experience](https://www.uxokdc.com/Experience): Career timeline and design leadership across AI, SaaS, e-commerce, fintech, healthcare, and enterprise — from individual contributor to strategy.
+
+## Selected case studies
+
+- [TraderVault LM](https://www.uxokdc.com/TraderVault%20LM%20Case%20Study): A conversational AI trading platform designed the way active traders actually think — surfacing patterns as they form, framing odds honestly, and tracing every signal to its source.
+- [TintoProps](https://www.uxokdc.com/TintoProps%20Case%20Study): Colombia's first AI-native real estate portal — property search powered by conversational AI.
+- [Construct AI](https://www.uxokdc.com/Construct%20AI%20Case%20Study): AI project intelligence for construction teams — proactive insights and voice-first workflows for field and office.
+- [ULTRA](https://www.uxokdc.com/ULTRA%20Case%20Study): A social feed built on sentiment filters and blockchain transparency — designing trust and control back into social media.
+- [NESTRE](https://www.uxokdc.com/NESTRE%20Case%20Study): A cognitive-training facility rebuilt for mobile — 90% smooth-navigation and 85% professional-feel scores in usability testing.
+- [Ulta Beauty Media](https://www.uxokdc.com/ULTA%20BEAUTY%20Case%20Study): A self-serve retail-media advertising platform built on first-party data for non-technical media buyers.
+- [Yelo](https://www.uxokdc.com/YELO%20Case%20Study): A campus-only ride-hailing network — 90% safety satisfaction, 25% reduction in wait times.
+- [AI Genius](https://www.uxokdc.com/AI%20Genius%20Case%20Study): A freelance intelligence platform applying AI to project-based work.
+
+## Expertise
+
+- AI product design: conversational AI, Reactive AI, Intent-Centered Design, agent UX, AI trust and explainability.
+- Product strategy, UX research, design systems, interaction design, and design-to-code delivery.
+
+## Contact
+
+- Email: uxokdc@gmail.com
+- LinkedIn: https://www.linkedin.com/in/davidcervantes/
+- Website: https://www.uxokdc.com

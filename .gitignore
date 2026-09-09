@@ -1,2 +1,9 @@
 node_modules/
 package-lock.json
+.vercel
+.env*
+
+# local audit artifacts
+AUDIT.md
+CASE-STUDY-REWRITE-NOTES.md
+hero-*-verified.png

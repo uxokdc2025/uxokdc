@@ -163,7 +163,7 @@
   }
 
   // ── SEO + AI crawler metadata ─────────────────────────────────────────────
-  const SITE_ORIGIN = 'https://uxokdc.com';
+  const SITE_ORIGIN = 'https://www.uxokdc.com';
   const AUTHOR = 'David Cervantes';
   const AUTHOR_HANDLE = '@uxokdc';
 
@@ -247,7 +247,9 @@
     function setMeta(name, content, attr = 'name') {
       if (!content) return;
       let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+      // Static tags in the HTML head are canonical — only fill gaps, never overwrite.
+      if (el) return;
+      el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el);
       el.setAttribute('content', content);
     }
 
@@ -281,7 +283,7 @@
     setMeta('og:url',         canonical,                 'property');
     setMeta('og:site_name',   'David Cervantes',         'property');
     setMeta('og:locale',      'en_US',                   'property');
-    setMeta('og:image',       SITE_ORIGIN + '/og-image.png', 'property');
+    setMeta('og:image',       SITE_ORIGIN + '/assets/og/home.png', 'property');
 
     // ── Twitter / X Card ──
     setMeta('twitter:card',        'summary_large_image');
@@ -289,7 +291,7 @@
     setMeta('twitter:creator',     AUTHOR_HANDLE);
     setMeta('twitter:title',       meta.title);
     setMeta('twitter:description', meta.description);
-    setMeta('twitter:image',       SITE_ORIGIN + '/og-image.png');
+    setMeta('twitter:image',       SITE_ORIGIN + '/assets/og/home.png');
 
     // ── AI crawler hints ──
     setMeta('ai:content-type', 'portfolio');
@@ -297,7 +299,7 @@
     setMeta('ai:topic',        'UX design, product design, AI product design, design systems');
 
     // ── JSON-LD structured data ──
-    if (document.querySelector('script[data-ld]')) return;
+    if (document.querySelector('script[data-ld], script[type="application/ld+json"]')) return;
 
     const isCase = filename.includes('Case Study');
 

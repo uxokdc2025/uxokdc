@@ -26,4 +26,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://uxokdc.com/sitemap.xml
+Sitemap: https://www.uxokdc.com/sitemap.xml
