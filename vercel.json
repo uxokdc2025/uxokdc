@@ -2,6 +2,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/about-me", "destination": "/About", "permanent": true },
+    { "source": "/my-process", "destination": "/About", "permanent": true },
+    { "source": "/portfolio-item/:slug*", "destination": "/Work", "permanent": true },
+    { "source": "/portfolio", "destination": "/Work", "permanent": true },
     { "source": "/Home.dc.html", "destination": "/", "permanent": true },
     { "source": "/Home.dc",      "destination": "/", "permanent": true },
     { "source": "/About.dc.html", "destination": "/About", "permanent": true },

@@ -33,26 +33,105 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "David Cervantes",
-  "url": "https://www.uxokdc.com",
-  "image": "https://www.uxokdc.com/assets/og/home.png",
-  "jobTitle": "AI Product Leader, Designer & Strategist",
-  "description": "25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.",
-  "email": "uxokdc@gmail.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/davidcervantes/",
-    "https://www.uxokdc.com"
-  ],
-  "knowsAbout": [
-    "UX Design",
-    "Product Strategy",
-    "AI Product Design",
-    "Design Systems",
-    "User Research",
-    "Interaction Design",
-    "Conversational AI",
-    "Reactive AI"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.uxokdc.com/#website",
+      "url": "https://www.uxokdc.com",
+      "name": "David Cervantes",
+      "description": "25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.",
+      "publisher": {
+        "@id": "https://www.uxokdc.com/#david"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.uxokdc.com/#profile",
+      "url": "https://www.uxokdc.com/",
+      "name": "David Cervantes — AI Product Leader, Designer & Strategist",
+      "isPartOf": {
+        "@id": "https://www.uxokdc.com/#website"
+      },
+      "about": {
+        "@id": "https://www.uxokdc.com/#david"
+      },
+      "mainEntity": {
+        "@id": "https://www.uxokdc.com/#david"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.uxokdc.com/#david",
+      "name": "David Cervantes",
+      "url": "https://www.uxokdc.com",
+      "image": "https://www.uxokdc.com/assets/og/home.png",
+      "jobTitle": "AI Product Leader, Designer & Strategist",
+      "description": "25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.",
+      "email": "uxokdc@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Orlando",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/davidcervantes/",
+        "https://github.com/uxokdc2025",
+        "https://davidcervantes.framer.ai/"
+      ],
+      "knowsAbout": [
+        "UX Design",
+        "Product Strategy",
+        "AI Product Design",
+        "Conversational AI",
+        "Reactive AI",
+        "Intent-Centered Design",
+        "Design Systems",
+        "User Research",
+        "Interaction Design",
+        "Design Leadership",
+        "Product Management",
+        "Frontend Development"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is David Cervantes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "David Cervantes is an AI product leader, designer, and strategist with 25 years of experience designing and shipping digital products across fintech, healthcare, retail media, real estate, and construction. He designs conversational and Reactive AI systems end-to-end — from strategy and research through working code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does David Cervantes do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "He leads and designs AI-native products: product strategy, UX research, design systems, and design-to-code delivery. His recent work centers on conversational AI, Reactive AI, and Intent-Centered Design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Intent-Centered Design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Intent-Centered Design is David Cervantes’ approach to designing AI products around what the user is actually trying to accomplish — surfacing the right capability at the moment of intent instead of burying it in menus or chat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is David Cervantes available for work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. David takes select contract engagements in AI product design, strategy, and design leadership. Contact him at uxokdc@gmail.com."
+          }
+        }
+      ]
+    }
   ]
 }
 </script>

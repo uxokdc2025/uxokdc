@@ -101,30 +101,63 @@ for (const p of Object.values(PAGES)) if (p.ld === 'case') p.keywords = KW[p.og]
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// Verified, live profiles only (probed 200/redirect). Never list a profile that 404s.
+const SAMEAS = [
+  'https://www.linkedin.com/in/davidcervantes/',
+  'https://github.com/uxokdc2025',
+  'https://davidcervantes.framer.ai/',
+];
+const KNOWS = ['UX Design', 'Product Strategy', 'AI Product Design', 'Conversational AI', 'Reactive AI', 'Intent-Centered Design', 'Design Systems', 'User Research', 'Interaction Design', 'Design Leadership', 'Product Management', 'Frontend Development'];
+const PERSON_ID = HOST + '/#david';
+const JOBTITLE = 'AI Product Leader, Designer & Strategist';
+
+function personEntity(desc) {
+  return {
+    '@type': 'Person', '@id': PERSON_ID, name: AUTHOR, url: HOST,
+    image: OGDIR + 'home.png', jobTitle: JOBTITLE, description: desc, email: 'uxokdc@gmail.com',
+    address: { '@type': 'PostalAddress', addressLocality: 'Orlando', addressRegion: 'FL', addressCountry: 'US' },
+    sameAs: SAMEAS, knowsAbout: KNOWS,
+  };
+}
+
+// AI answer-engine bait: plain, factual Q&A that ChatGPT/Perplexity/Google can lift verbatim.
+const FAQ = [
+  ['Who is David Cervantes?', 'David Cervantes is an AI product leader, designer, and strategist with 25 years of experience designing and shipping digital products across fintech, healthcare, retail media, real estate, and construction. He designs conversational and Reactive AI systems end-to-end — from strategy and research through working code.'],
+  ['What does David Cervantes do?', 'He leads and designs AI-native products: product strategy, UX research, design systems, and design-to-code delivery. His recent work centers on conversational AI, Reactive AI, and Intent-Centered Design.'],
+  ['What is Intent-Centered Design?', 'Intent-Centered Design is David Cervantes’ approach to designing AI products around what the user is actually trying to accomplish — surfacing the right capability at the moment of intent instead of burying it in menus or chat.'],
+  ['Is David Cervantes available for work?', 'Yes. David takes select contract engagements in AI product design, strategy, and design leadership. Contact him at uxokdc@gmail.com.'],
+];
+function faqPage() {
+  return { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+}
+
 function jsonld(p) {
   if (p.ld === 'skip') return null;
   const url = HOST + p.slug;
+  if (p.ld === 'person' && p.slug === '/') {
+    // Homepage: full entity graph — WebSite + ProfilePage + Person + FAQ, cross-linked by @id.
+    return { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebSite', '@id': HOST + '/#website', url: HOST, name: 'David Cervantes', description: p.desc, publisher: { '@id': PERSON_ID }, inLanguage: 'en' },
+      { '@type': 'ProfilePage', '@id': url + '#profile', url, name: p.title, isPartOf: { '@id': HOST + '/#website' }, about: { '@id': PERSON_ID }, mainEntity: { '@id': PERSON_ID } },
+      personEntity(p.desc),
+      faqPage(),
+    ] };
+  }
   if (p.ld === 'person') {
-    return {
-      '@context': 'https://schema.org', '@type': 'Person', name: AUTHOR, url: HOST,
-      image: OGDIR + 'home.png', jobTitle: 'AI Product Leader, Designer & Strategist',
-      description: p.desc, email: 'uxokdc@gmail.com',
-      sameAs: ['https://www.linkedin.com/in/davidcervantes/', HOST],
-      knowsAbout: ['UX Design', 'Product Strategy', 'AI Product Design', 'Design Systems', 'User Research', 'Interaction Design', 'Conversational AI', 'Reactive AI'],
-    };
+    return { '@context': 'https://schema.org', ...personEntity(p.desc) };
   }
   if (p.ld === 'collection') {
-    return { '@context': 'https://schema.org', '@type': 'CollectionPage', name: p.title, url, description: p.desc, author: { '@type': 'Person', name: AUTHOR, url: HOST } };
+    return { '@context': 'https://schema.org', '@type': 'CollectionPage', name: p.title, url, description: p.desc, about: { '@id': PERSON_ID }, mainEntity: { '@id': PERSON_ID }, isPartOf: { '@id': HOST + '/#website' } };
   }
-  // case
+  // case study
   return {
     '@context': 'https://schema.org', '@type': 'CreativeWork', name: p.title, headline: p.title,
     url, image: OGDIR + p.og, description: p.desc, genre: 'UX Case Study', inLanguage: 'en',
     keywords: p.keywords || 'AI product design, UX case study, product strategy, design systems',
-    author: { '@type': 'Person', name: AUTHOR, url: HOST, sameAs: ['https://www.linkedin.com/in/davidcervantes/', HOST] },
-    creator: { '@type': 'Person', name: AUTHOR, url: HOST },
-    publisher: { '@type': 'Person', name: AUTHOR, url: HOST },
-    isPartOf: { '@type': 'WebSite', name: 'David Cervantes Portfolio', url: HOST },
+    author: { '@type': 'Person', '@id': PERSON_ID, name: AUTHOR, url: HOST, jobTitle: JOBTITLE, sameAs: SAMEAS },
+    creator: { '@id': PERSON_ID },
+    publisher: { '@id': PERSON_ID },
+    isPartOf: { '@type': 'WebSite', '@id': HOST + '/#website', name: 'David Cervantes', url: HOST },
   };
 }
 
