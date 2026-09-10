@@ -159,6 +159,8 @@ body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-s
   .dc-hero-img{object-position:center top}
   #top [style*="top:130px"]{left:20px!important;right:20px!important;}
   #top [style*="gap:32px"]{gap:18px!important;}
+  /* Hero subhead wraps naturally on mobile — drop the desktop-only hard break */
+  .dc-br{display:none}
 }
 </style>
 </helmet>
@@ -325,7 +327,7 @@ class Component extends DCLogic {
 
   static LINES = [
     { text: ["AI-native", "products.", "End to end."], big: true },
-    { text: ["AI product leader, designer, and strategist. 25 years shipping. Now designing conversational and Reactive AI", "— from first question to working code."], big: false }
+    { text: ["AI product leader, designer, and strategist. 25 years shipping. Now designing conversational and Reactive AI ", "— from first question to working code."], big: false }
   ];
 
   componentDidMount() {
@@ -386,7 +388,7 @@ class Component extends DCLogic {
     const sentenceLines = Component.LINES.map((line, i) => {
       const delay = (i * 0.32 + 0.15) + 's';
       const parts = Array.isArray(line.text)
-        ? line.text.flatMap((t, j) => j ? [React.createElement('br', { key: 'b' + j }), t] : [t])
+        ? line.text.flatMap((t, j) => j ? [React.createElement('br', { key: 'b' + j, className: line.big ? null : 'dc-br' }), t] : [t])
         : [line.text];
       return React.createElement('div', { key: i, style: lineStyle(line.big, delay) }, ...parts);
     });
