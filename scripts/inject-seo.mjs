@@ -38,13 +38,13 @@ const PAGES = {
     ld: 'collection',
   },
   'Writing.html': {
-    slug: '/Writing', og: 'home.png', type: 'website',
+    slug: '/Writing', og: 'home.png', type: 'website', noindex: true,
     title: 'Writing — David Cervantes',
     desc: 'Essays on the methods David Cervantes designs AI products around: Intent-Centered Design, Reactive AI, and Conversational Flow Mapping.',
     ld: 'collection',
   },
   'Intent-Centered-Design.html': {
-    slug: '/Intent-Centered-Design', og: 'intent-centered-design.png', type: 'article',
+    slug: '/Intent-Centered-Design', og: 'intent-centered-design.png', type: 'article', noindex: true,
     title: 'Intent-Centered Design — David Cervantes',
     desc: 'Intent-Centered Design: a method for designing AI products around what the user is trying to do — not around the model or a chat box. By David Cervantes.',
     ld: 'article',
@@ -52,7 +52,7 @@ const PAGES = {
     term: ['Intent-Centered Design', "A method of designing AI products around the user's intent rather than the model's capabilities or a generic conversation — surfacing the right capability at the moment the user forms a goal, and building trust and human hand-off into the design."],
   },
   'Reactive-AI.html': {
-    slug: '/Reactive-AI', og: 'reactive-ai.png', type: 'article',
+    slug: '/Reactive-AI', og: 'reactive-ai.png', type: 'article', noindex: true,
     title: 'Reactive AI — David Cervantes',
     desc: 'Reactive AI: AI that responds to the state of the work — surfacing the right insight at the moment it matters, instead of waiting to be asked. By David Cervantes.',
     ld: 'article',
@@ -60,7 +60,7 @@ const PAGES = {
     term: ['Reactive AI', "AI that responds to the state of the work — surfacing an insight, warning, or option the instant it becomes relevant, without the user having to ask, while staying explainable and correctable."],
   },
   'Conversational-Flow-Mapping.html': {
-    slug: '/Conversational-Flow-Mapping', og: 'conversational-flow-mapping.png', type: 'article',
+    slug: '/Conversational-Flow-Mapping', og: 'conversational-flow-mapping.png', type: 'article', noindex: true,
     title: 'Conversational Flow Mapping — David Cervantes',
     desc: 'Conversational Flow Mapping: designing an AI conversation like a product flow — mapping intents, turns, and hand-offs before writing a prompt. By David Cervantes.',
     ld: 'article',
@@ -211,7 +211,7 @@ function block(file, p) {
     `<title>${esc(p.title)}</title>`,
     `<meta name="description" content="${esc(p.desc)}">`,
     `<meta name="author" content="${AUTHOR}">`,
-    `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`,
+    `<meta name="robots" content="${p.noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'}">`,
     `<meta name="theme-color" content="#F2F1EE">`,
     `<link rel="canonical" href="${url}">`,
     `<link rel="icon" type="image/svg+xml" href="/favicon-dc.svg">`,

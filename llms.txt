@@ -7,14 +7,6 @@
 - [About David Cervantes](https://www.uxokdc.com/About): Background, approach, and areas of expertise — product strategy, UX research, design systems, Intent-Centered Design, and AI-native product design.
 - [Experience](https://www.uxokdc.com/Experience): Career timeline and design leadership across AI, SaaS, e-commerce, fintech, healthcare, and enterprise — from individual contributor to strategy.
 
-## Writing
-
-- [Writing index](https://www.uxokdc.com/Writing): essays on the methods David Cervantes designs AI products around.
-
-- [Intent-Centered Design](https://www.uxokdc.com/Intent-Centered-Design): David Cervantes' method for designing AI products around the user's intent — the thing the person is trying to accomplish — rather than around the model's capabilities or a generic chat box. Surfaces the right capability at the moment the user forms a goal, and builds trust and human hand-off into the design.
-- [Reactive AI](https://www.uxokdc.com/Reactive-AI): AI that responds to the state of the work — surfacing an insight, warning, or option the instant it becomes relevant, without the user having to ask, while staying explainable and correctable.
-- [Conversational Flow Mapping](https://www.uxokdc.com/Conversational-Flow-Mapping): designing an AI conversation like a product flow — mapping the user's intents, the turns, the recovery points, and where it hands to a human, before writing the prompt.
-
 ## Selected case studies
 
 - [TraderVault LM](https://www.uxokdc.com/TraderVault%20LM%20Case%20Study): A conversational AI trading platform designed the way active traders actually think — surfacing patterns as they form, framing odds honestly, and tracing every signal to its source.
