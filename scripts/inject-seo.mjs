@@ -9,14 +9,14 @@ const HANDLE = '@uxokdc';
 const PAGES = {
   'index.html': {
     slug: '/', og: 'home.png', type: 'website',
-    title: 'David Cervantes — AI Product Leader, Designer & Strategist',
+    title: 'David Cervantes — AI Product Leader, Designer, and Strategist',
     desc: '25 years designing digital products — from interfaces to AI-native systems. Product strategy, UX research, design systems, and working code.',
     ld: 'person',
   },
   'About.html': {
     slug: '/About', og: 'home.png', type: 'profile',
-    title: 'About — David Cervantes · AI Product Leader, Designer & Strategist',
-    desc: 'AI product leader, designer and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native. Available for select engagements.',
+    title: 'About — David Cervantes · AI Product Leader, Designer, and Strategist',
+    desc: 'AI product leader, designer, and strategist with 25 years turning complex products into things people actually want to use. Now designing and building AI-native. Available for select engagements.',
     ld: 'skip', // keeps its richer hand-written Person JSON-LD
   },
   'Experience.html': {
@@ -34,7 +34,13 @@ const PAGES = {
   'Portfolio Explorations.html': {
     slug: '/Portfolio%20Explorations', og: 'home.png', type: 'website',
     title: 'Portfolio Explorations — David Cervantes',
-    desc: 'Visual explorations, interface studies, and design experiments by David Cervantes — AI product leader, designer & strategist.',
+    desc: 'Visual explorations, interface studies, and design experiments by David Cervantes — AI product leader, designer, and strategist.',
+    ld: 'collection',
+  },
+  'Writing.html': {
+    slug: '/Writing', og: 'home.png', type: 'website',
+    title: 'Writing — David Cervantes',
+    desc: 'Essays on the methods David Cervantes designs AI products around: Intent-Centered Design, Reactive AI, and Conversational Flow Mapping.',
     ld: 'collection',
   },
   'Intent-Centered-Design.html': {
@@ -133,7 +139,7 @@ const SAMEAS = [
 ];
 const KNOWS = ['UX Design', 'Product Strategy', 'AI Product Design', 'Conversational AI', 'Reactive AI', 'Intent-Centered Design', 'Design Systems', 'User Research', 'Interaction Design', 'Design Leadership', 'Product Management', 'Frontend Development'];
 const PERSON_ID = HOST + '/#david';
-const JOBTITLE = 'AI Product Leader, Designer & Strategist';
+const JOBTITLE = 'AI Product Leader, Designer, and Strategist';
 
 function personEntity(desc) {
   return {

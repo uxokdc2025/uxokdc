@@ -10,7 +10,7 @@ const BG = '#F2F1EE', INK = '#0D0D0D', ORANGE = '#F54900', MUTED = '#6B6B66', LI
 
 const CARDS = [
   { slug: 'home', kind: 'home', img: 'david.cervantes.jpg',
-    title: 'AI Product Leader,<br>Designer &amp; Strategist',
+    title: 'AI Product Leader,<br>Designer, and Strategist',
     desc: '25 years shipping digital products. Now designing conversational &amp; Reactive AI — from first question to working code.' },
   { slug: 'tradervault', eyebrow: 'CASE STUDY', title: 'TraderVault LM', img: 'TraderVault_thumb.jpg',
     desc: 'Conversational AI trading intelligence, built the way traders actually think.' },
