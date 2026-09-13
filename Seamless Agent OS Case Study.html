@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SEO:start (generated — do not hand-edit; run scripts/inject-seo.mjs) -->
+<title>Seamless Agent OS — Designing the operating layer for a human + AI organization | David Cervantes</title>
+<meta name="description" content="Case study: I designed and built Seamless Agent OS — one operating layer for projects, specialized AI workers, model routing, context, evidence-based QA, approvals, and human escalation.">
+<meta name="author" content="David Cervantes">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#F2F1EE">
+<link rel="canonical" href="https://www.uxokdc.com/Seamless%20Agent%20OS%20Case%20Study">
+<link rel="icon" type="image/svg+xml" href="/favicon-dc.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Cervantes">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Seamless Agent OS — Designing the operating layer for a human + AI organization">
+<meta property="og:description" content="Case study: I designed and built Seamless Agent OS — one operating layer for projects, specialized AI workers, model routing, context, evidence-based QA, approvals, and human escalation.">
+<meta property="og:url" content="https://www.uxokdc.com/Seamless%20Agent%20OS%20Case%20Study">
+<meta property="og:image" content="https://www.uxokdc.com/assets/agentos/agentos-01.jpg">
+<meta property="og:image:secure_url" content="https://www.uxokdc.com/assets/agentos/agentos-01.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1273">
+<meta property="og:image:alt" content="Seamless Agent OS — Mission Control">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@uxokdc">
+<meta name="twitter:creator" content="@uxokdc">
+<meta name="twitter:title" content="Seamless Agent OS — Designing the operating layer for a human + AI organization">
+<meta name="twitter:description" content="Case study: I designed and built Seamless Agent OS — one operating layer for projects, specialized AI workers, model routing, context, evidence-based QA, approvals, and human escalation.">
+<meta name="twitter:image" content="https://www.uxokdc.com/assets/agentos/agentos-01.jpg">
+<meta name="twitter:image:alt" content="Seamless Agent OS — Mission Control">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Seamless Agent OS — Designing the operating layer for a human + AI organization",
+  "headline": "Seamless Agent OS — Designing the operating layer for a human + AI organization",
+  "url": "https://www.uxokdc.com/Seamless%20Agent%20OS%20Case%20Study",
+  "image": "https://www.uxokdc.com/assets/agentos/agentos-01.jpg",
+  "description": "Case study: I designed and built Seamless Agent OS — one operating layer for projects, specialized AI workers, model routing, context, evidence-based QA, approvals, and human escalation.",
+  "genre": "UX Case Study",
+  "inLanguage": "en",
+  "keywords": "AI product design, agentic experience design, agent orchestration, multi-agent workflows, human-AI interaction, model routing, evidence-based QA, human-in-the-loop, design-to-code",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.uxokdc.com/#david",
+    "name": "David Cervantes",
+    "url": "https://www.uxokdc.com",
+    "jobTitle": "AI product and experience leader",
+    "sameAs": [
+      "https://www.linkedin.com/in/davidcervantes/",
+      "https://github.com/uxokdc2025",
+      "https://davidcervantes.framer.ai/"
+    ]
+  },
+  "creator": { "@id": "https://www.uxokdc.com/#david" },
+  "publisher": { "@id": "https://www.uxokdc.com/#david" },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://www.uxokdc.com/#website",
+    "name": "David Cervantes",
+    "url": "https://www.uxokdc.com"
+  }
+}
+</script>
+<!-- SEO:end -->
+
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-serif,system-ui,sans-serif;--font-sans:'Lexend Deca',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--font-sans)}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.reveal{animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 4% entry 40%}
+.figframe{width:100%;border-radius:16px;overflow:hidden;background:#EDECE8;border:0.5px solid #D8D6D0}
+.figframe img{width:100%;display:block}
+.figcap{margin:14px 2px 0;font:400 13px/1.5 var(--font-sans);color:#8A8A85}
+@media(max-width:768px){
+  nav[data-dcnav]{padding:16px 20px!important}
+  nav[data-dcnav] .navpills{display:none!important}
+  #top{padding:132px 20px 40px!important}
+  section .secgrid{grid-template-columns:1fr!important}
+  .twocol{grid-template-columns:1fr!important}
+  .padx{padding-left:20px!important;padding-right:20px!important}
+}
+</style>
+</helmet>
+
+<!-- ── STICKY NAV ── -->
+<nav data-dcnav style="position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 48px;background:rgba(242,241,238,0.82);border-bottom:0.5px solid #D8D6D0;backdrop-filter:blur(14px)">
+  <a href="/" style="display:flex;align-items:center;gap:16px;text-decoration:none;justify-self:start">
+    <div style="width:44px;height:44px;flex:none;border-radius:12px;background:#ffffff;border:0.5px solid #D8D6D0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:16px;color:#0D0D0D">d<span style="color:#F54900">c</span></div>
+    <span style="font-family:var(--font-display);font-weight:600;font-size:36px;color:#0D0D0D;white-space:nowrap">david<span style="color:#F54900">.</span>cervantes</span>
+  </a>
+  <div class="navpills" style="display:flex;align-items:center;gap:8px">
+    <a href="/About" style="font:500 14px var(--font-sans);color:#0D0D0D;text-decoration:none;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:11px 22px;transition:color 150ms ease-out" style-hover="color:#F54900">About</a>
+    <a href="/Experience" style="font:500 14px var(--font-sans);color:#0D0D0D;text-decoration:none;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:11px 22px;transition:color 150ms ease-out" style-hover="color:#F54900">Experience</a>
+    <a href="/Work" style="font:500 14px var(--font-sans);text-decoration:none;background:#0D0D0D;color:#F2F1EE;border:0.5px solid #0D0D0D;border-radius:999px;padding:11px 22px">Work</a>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:flex-end">
+    <a href="mailto:uxokdc@gmail.com?subject=Seamless%20Agent%20OS" aria-label="Email David" style="display:inline-flex;align-items:center;gap:8px;color:#0D0D0D;text-decoration:none;border:0.5px solid #D8D6D0;border-radius:999px;width:44px;height:44px;justify-content:center;transition:color 150ms ease-out,border-color 150ms ease-out" style-hover="color:#F54900;border-color:#F54900">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/davidcervantes/" target="_blank" rel="noopener" aria-label="LinkedIn profile" style="display:inline-flex;align-items:center;gap:8px;color:#0D0D0D;text-decoration:none;border:0.5px solid #D8D6D0;border-radius:999px;width:44px;height:44px;justify-content:center;transition:color 150ms ease-out,border-color 150ms ease-out" style-hover="color:#F54900;border-color:#F54900">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"></path></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div id="top" style="max-width:1240px;margin:0 auto;padding:180px 48px 48px" data-screen-label="Case Hero">
+  <a href="/Work" style="display:inline-flex;align-items:center;gap:8px;font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;text-decoration:none;margin-bottom:28px;transition:color 150ms ease-out" style-hover="color:#F54900"><span style="font-size:15px">←</span> Back to work</a>
+  <div style="animation:rise 0.8s ease-out both">
+    <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.14em;color:#F54900;margin-bottom:20px">Seamless Agent OS · Flagship</div>
+    <h1 style="margin:0 0 28px;font-family:var(--font-display);font-weight:600;font-size:clamp(38px,5.4vw,80px);line-height:1.02;letter-spacing:-0.03em;color:#0D0D0D;max-width:20ch">Designing the operating layer for a human + AI organization</h1>
+    <p style="margin:0 0 36px;font:400 clamp(18px,1.8vw,24px)/1.5 var(--font-sans);color:#3A3935;max-width:60ch">As my AI workforce grew, coordination became the real product problem. So I designed Agent OS: one operating layer for projects, specialized workers, model routing, context, evidence-based QA, approvals, communications, and the decisions that still require a person.</p>
+    <div style="display:inline-flex;align-items:center;gap:10px;font:500 13px/1.3 var(--font-display);color:#0D0D0D;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:10px 18px;margin:0 0 40px">
+      <span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#2D9973;display:inline-block"></span>
+      <span>Working internal platform · some capabilities live, others gated or in development</span>
+    </div>
+  </div>
+  <div class="secgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:0.5px solid #D8D6D0;border-bottom:0.5px solid #D8D6D0;padding:26px 0">
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">My role</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Founder · product strategy · agentic experience architect · builder</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Discipline</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Agentic systems · workflow architecture · design-to-code</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Status</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Working internal platform</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Methods</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Reactive AI · Intent-Centered Design · Conversational Flow Mapping</div></div>
+  </div>
+</div>
+
+<!-- ── HERO IMAGE ── -->
+<div class="padx" style="max-width:1240px;margin:0 auto;padding:0 48px 8px" data-screen-label="Hero Image">
+  <div class="figframe">
+    <img src="assets/agentos/agentos-01.jpg" alt="Seamless Agent OS — Mission Control: active work, Hermes Kanban, live fleet, and model health in one view" loading="eager">
+  </div>
+  <p class="figcap">Mission Control — the daily view: what's active, what's blocked, what needs a person, and the health of the worker fleet and models behind it.</p>
+</div>
+
+<!-- ── PROBLEM ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Problem">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">The problem was no longer the model</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 22px;font:400 clamp(18px,1.7vw,24px)/1.55 var(--font-sans);color:#0D0D0D">I could give increasingly capable AI agents real work. Coordinating them was becoming a job of its own.</p>
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Tasks moved between Claude, Codex, Hermes, Muse, Gemini, DeepSeek, and other specialized workers. Each could do something valuable. The larger system still struggled with context, ownership, continuity, verification, escalation, and knowing when a human actually needed to step in.</p>
+      <ul style="list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px">
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:7px">●</span><p style="margin:0;font:400 clamp(15px,1.4vw,18px)/1.55 var(--font-sans);color:#3A3935">An agent could finish a task without completing the larger outcome.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:7px">●</span><p style="margin:0;font:400 clamp(15px,1.4vw,18px)/1.55 var(--font-sans);color:#3A3935">Context disappeared between sessions; decisions were repeated because the next worker didn't know what had been settled.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:7px">●</span><p style="margin:0;font:400 clamp(15px,1.4vw,18px)/1.55 var(--font-sans);color:#3A3935">Agents sometimes looped, worked from stale branches, or reported "done" without meaningful proof.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:7px">●</span><p style="margin:0;font:400 clamp(15px,1.4vw,18px)/1.55 var(--font-sans);color:#3A3935">I had become the routing layer, memory system, project manager, and final verifier.</p></li>
+      </ul>
+      <p style="margin:22px 0 0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#0D0D0D">Adding another model would not fix that. The real problem was coordination and trust.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE REFRAME ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Reframe">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">The reframe</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 20px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Most AI tools are designed around a single exchange: a person asks, the model responds, the interaction ends. Real work does not behave that way. It crosses days, people, tools, decisions, failures, and changing context.</p>
+      <p style="margin:0 0 20px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The original question was <i>“How do I manage multiple AI agents?”</i> The more useful question became:</p>
+      <p style="margin:0 0 8px;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#0D0D0D">How should a human + AI organization operate?</p>
+      <p style="margin:20px 0 0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">That changed the product from a fleet dashboard into an operating layer. The AI does the volume. The human handles the moments that require judgment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIGURE: MESSAGES ── -->
+<div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) 48px">
+  <div class="figframe"><img src="assets/agentos/agentos-08.jpg" alt="Seamless Agent OS — a multi-agent conversation where the operator directs Claude, Hermes, and other workers in one thread" loading="lazy"></div>
+  <p class="figcap">Intent before interface — the operator states an outcome; the system routes it to the right worker and keeps the conversation in one place.</p>
+</div>
+
+<!-- ── THE OPERATING MODEL ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Operating model">
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,110px) 48px">
+    <h2 style="margin:0 0 12px;font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.4vw,60px);line-height:1;letter-spacing:-0.03em;color:#0D0D0D">The operating model</h2>
+    <p style="margin:0 0 clamp(32px,4vw,52px);font:400 clamp(16px,1.5vw,20px)/1.6 var(--font-sans);color:#3A3935;max-width:64ch">This is not human versus AI. It is a designed handoff between volume and judgment.</p>
+    <div class="twocol" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px)">
+      <div style="border:0.5px solid #D8D6D0;border-radius:18px;padding:clamp(24px,3vw,36px);background:#ffffff">
+        <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#F54900;margin-bottom:18px">What AI owns</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Retrieving relevant context</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Decomposing and routing work</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Executing approved tasks within permissions</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Monitoring status and dependencies</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Producing artifacts and checking acceptance criteria</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Collecting evidence and flagging uncertainty</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Escalating exceptions; preserving operational history</li>
+        </ul>
+      </div>
+      <div style="border:0.5px solid #0D0D0D;border-radius:18px;padding:clamp(24px,3vw,36px);background:#0D0D0D;color:#F2F1EE">
+        <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#F1B892;margin-bottom:18px">What humans own</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Intent and product direction</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Consequential decisions</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Security, privacy, legal, and meaningful cost choices</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Irreversible actions</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Final design judgment</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Sensitive external communication</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#D8D6D0">Changing the rules the system operates under</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIGURE: FLEET ROUTING ── -->
+<div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) 48px">
+  <div class="figframe"><img src="assets/agentos/agentos-09.jpg" alt="Seamless Agent OS — worker fleet health with per-worker model, routing policy, throughput, and estimated cost" loading="lazy"></div>
+  <p class="figcap">Model routing as its own layer — OmniRoute separates the work decision from the model decision, choosing a provider by fit, availability, cost, and health.</p>
+</div>
+
+<!-- ── THE WORK SYSTEM ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Work system">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">The work system</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 22px;font:500 clamp(17px,1.6vw,22px)/1.4 var(--font-display);color:#0D0D0D">Backlog → Building → QA → Design Review → Done</p>
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D">“Done” became an evidence state.</b> A successful response is not proof of a successful outcome. The workflow requires evidence appropriate to the work — tests, screenshots, browser verification, live URLs, response codes, or commit references. HTTP 200 alone is not proof that an experience works.</p>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">QA tests against the actual artifact, and the builder should not be the only verifier. Design Review is where human judgment is applied to experience quality that can't be reduced to an automated assertion. Blocked is metadata, not a place where work disappears.</p>
+    </div>
+  </div>
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:0 48px clamp(40px,5vw,64px)">
+    <div class="figframe"><img src="assets/agentos/agentos-07.jpg" alt="Seamless Agent OS — Hermes Kanban board with Todo, Building, QA, Blocked, and Done lanes and evidence-carrying work cards" loading="lazy"></div>
+    <p class="figcap">Hermes Kanban — one pipeline for the whole fleet. Each card carries its owner, state, and the evidence that closes it.</p>
+  </div>
+</section>
+
+<!-- ── FAILURE ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Failure">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">A failure that changed the architecture</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">One of the most useful lessons came from a Codex deployment loop. Codex was committing work into disposable worktree branches while the meaningful product commits lived elsewhere. A deployment was technically successful — but it was built from stale code. The system could report activity and even produce a working URL without delivering the current product.</p>
+      <p style="margin:0 0 20px;font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2.4vw,30px);line-height:1.15;letter-spacing:-0.02em;color:#0D0D0D">Agent activity is not the same as business progress.</p>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The response was to strengthen canonical project state, branch ownership, deployment provenance, and evidence requirements. Every Agent OS workflow is now designed to preserve the chain between intent, execution, evidence, and outcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Trust">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">Trust is part of the architecture</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 20px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Agent OS does not rely on a model remembering that it should behave safely. Trust is encoded through worker permissions, project and company policy, approval checkpoints, send gates, evidence requirements, model health and fallback, independent QA, design review, a system-wide kill switch, and an audit trail of actions and decisions.</p>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#0D0D0D">Autonomy is deliberately graduated. Infrastructure may exist before the authority to use it is enabled. That restraint is a product feature, not unfinished thinking.</p>
+    </div>
+  </div>
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:0 48px clamp(40px,5vw,64px)">
+    <div class="figframe"><img src="assets/agentos/agentos-10.jpg" alt="Seamless Agent OS — Trust Center showing agents, models, connectors, kill-switch status, and framework coverage" loading="lazy"></div>
+    <p class="figcap">The Trust Center makes posture legible — agents, models, connectors, the kill switch, and control-framework coverage in one place.</p>
+  </div>
+</section>
+
+<!-- ── WHAT EXISTS TODAY ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Maturity">
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,110px) 48px">
+    <h2 style="margin:0 0 12px;font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.4vw,60px);line-height:1;letter-spacing:-0.03em;color:#0D0D0D">What exists today</h2>
+    <p style="margin:0 0 clamp(32px,4vw,52px);font:400 clamp(16px,1.5vw,20px)/1.6 var(--font-sans);color:#3A3935;max-width:64ch">I separate what is built from what is planned. Agentic products lose credibility quickly when a roadmap is presented as a result.</p>
+    <div class="twocol" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px)">
+      <div style="border:0.5px solid #D8D6D0;border-radius:18px;padding:clamp(24px,3vw,36px);background:#ffffff">
+        <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#2D9973;margin-bottom:18px">Working today</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Projects and task lifecycle</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Kanban orchestration and Hermes runtime coordination</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">OmniRoute model routing and fallback</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Fleet roles and worker health</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Evidence-based QA and Design Review</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Approvals, communication gates, and kill switch</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Mission Control and operational visibility</li>
+        </ul>
+      </div>
+      <div style="border:0.5px solid #D8D6D0;border-radius:18px;padding:clamp(24px,3vw,36px);background:#EDECE8">
+        <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:18px">Gated or in development</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Deeper project memory and session condensation</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Independent code-review routing</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Full unification of conversations, files, and decisions per project</li>
+          <li style="font:400 15px/1.5 var(--font-sans);color:#3A3935">Broader autonomous execution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIGURE: OPEN DESIGN / BREADTH ── -->
+<div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) 48px clamp(40px,5vw,64px)">
+  <div class="figframe"><img src="assets/agentos/agentos-05.jpg" alt="Seamless Agent OS — Open Design surface generating prototypes, dashboards, decks, images, and motion from a sentence" loading="lazy"></div>
+  <p class="figcap">One operating layer, many surfaces — the same fleet drives project work, communications, SEO, and design without the user managing the machinery.</p>
+</div>
+
+<!-- ── WHAT IT TAUGHT ME ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Lessons">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">What this taught me</h2>
+    <div style="max-width:720px">
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:22px">
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Agentic experience extends beyond conversation.</b> The experience is the relationship among intent, context, intelligence, interface, action, control, and outcome.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Orchestration is a product problem.</b> Routing is one layer; a usable system also needs continuity, permissions, recovery, observability, evidence, and understandable human intervention.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Human attention is a scarce system resource.</b> Autonomy should remove routine coordination while protecting meaningful judgment.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">The model is not the differentiator.</b> Models improve and providers change. The durable advantage is the operating model and the product judgment around them.</p></li>
+      </ul>
+      <p style="margin:28px 0 0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">I am not positioning myself as an infrastructure engineer. My role is designing the operating model and experience that make agentic systems useful, trustworthy, and buildable — and leading the cross-functional work required to bring them into production.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STACK + RETURN ── -->
+<section style="border-top:0.5px solid #D8D6D0">
+  <div class="padx" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,64px) 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="font:400 13px/1.6 var(--font-sans);color:#8A8A85;max-width:70ch"><span style="color:#0D0D0D;font-weight:500">Selected architecture:</span> Next.js · React · TypeScript · Hermes runtime · OmniRoute model routing · Claude · Codex · Muse · Gemini · DeepSeek and additional model workers · Postgres · evidence gates · Design Review · approvals · auditability · kill switch</div>
+    <a href="/Work" style="display:inline-flex;align-items:center;gap:8px;font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;text-decoration:none;transition:color 150ms ease-out" style-hover="color:#F54900"><span style="font-size:15px">←</span> Back to work</a>
+  </div>
+</section>
+
+<!-- ── NEXT ── -->
+<a href="Construct AI Case Study.html" style="display:block;text-decoration:none;border-top:0.5px solid #D8D6D0;transition:background 200ms ease-out" style-hover="background:#ECEAE4">
+  <div class="padx" style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <div><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:10px">Next project</div><div style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,5vw,68px);line-height:1;letter-spacing:-0.03em;color:#0D0D0D">Construct AI</div></div>
+    <span style="font-size:clamp(32px,5vw,64px);color:#F54900" aria-hidden="true">→</span>
+  </div>
+</a>
+
+<!-- ── FOOTER ── -->
+<div style="position:relative;background:#0D0D0D;color:#F2F1EE;padding:48px;overflow:hidden" data-screen-label="Footer">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px 40px">
+    <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:#F2F1EE">david<span style="color:#F54900">.</span>cervantes <span style="font-weight:500;color:#8A8A85;font-size:15px;margin-left:12px">AI product and experience leader</span></div>
+    <div style="display:flex;align-items:center;gap:8px;font:300 15px var(--font-sans);color:#8A8A85"><span style="width:7px;height:7px;border-radius:50%;background:#2D9973;display:inline-block" aria-hidden="true"></span>Available for select roles and engagements</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
