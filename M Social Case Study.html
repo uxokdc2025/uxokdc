@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SEO:start (generated — do not hand-edit; run scripts/inject-seo.mjs) -->
+<title>M Social — Turning social content into a decision system | David Cervantes</title>
+<meta name="description" content="Case study: M Social (Momenta Social) shifts the person's job from authoring every post to deciding what represents their brand — with brand context, generation, three-state compliance checks, and artifact-bound human approval.">
+<meta name="author" content="David Cervantes">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#F2F1EE">
+<link rel="canonical" href="https://www.uxokdc.com/M%20Social%20Case%20Study">
+<link rel="icon" type="image/svg+xml" href="/favicon-dc.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Cervantes">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="M Social — Turning social content into a decision system">
+<meta property="og:description" content="Case study: M Social shifts the person's job from authoring every post to deciding what represents their brand — brand context, generation, three-state compliance checks, and artifact-bound human approval.">
+<meta property="og:url" content="https://www.uxokdc.com/M%20Social%20Case%20Study">
+<meta property="og:image" content="https://www.uxokdc.com/assets/msocial/msocial-01.jpg">
+<meta property="og:image:secure_url" content="https://www.uxokdc.com/assets/msocial/msocial-01.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1256">
+<meta property="og:image:alt" content="M Social — the decision feed">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@uxokdc">
+<meta name="twitter:creator" content="@uxokdc">
+<meta name="twitter:title" content="M Social — Turning social content into a decision system">
+<meta name="twitter:description" content="Case study: M Social shifts the person's job from authoring every post to deciding what represents their brand — brand context, generation, three-state compliance checks, and artifact-bound human approval.">
+<meta name="twitter:image" content="https://www.uxokdc.com/assets/msocial/msocial-01.jpg">
+<meta name="twitter:image:alt" content="M Social — the decision feed">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "M Social — Turning social content into a decision system",
+  "headline": "M Social — Turning social content into a decision system",
+  "url": "https://www.uxokdc.com/M%20Social%20Case%20Study",
+  "image": "https://www.uxokdc.com/assets/msocial/msocial-01.jpg",
+  "description": "Case study: M Social (Momenta Social) shifts the person's job from authoring every post to deciding what represents their brand — brand context, generation, three-state compliance checks, and artifact-bound human approval.",
+  "genre": "UX Case Study",
+  "inLanguage": "en",
+  "keywords": "AI product design, Reactive AI, agent experience, brand intelligence, compliance workflows, human-in-the-loop publishing, multi-tenant, Intent-Centered Design",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.uxokdc.com/#david",
+    "name": "David Cervantes",
+    "url": "https://www.uxokdc.com",
+    "jobTitle": "AI product and experience leader",
+    "sameAs": [
+      "https://www.linkedin.com/in/davidcervantes/",
+      "https://github.com/uxokdc2025",
+      "https://davidcervantes.framer.ai/"
+    ]
+  },
+  "creator": { "@id": "https://www.uxokdc.com/#david" },
+  "publisher": { "@id": "https://www.uxokdc.com/#david" },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://www.uxokdc.com/#website",
+    "name": "David Cervantes",
+    "url": "https://www.uxokdc.com"
+  }
+}
+</script>
+<!-- SEO:end -->
+
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F2F1EE;--font-display:'Google Sans','Outfit',ui-sans-serif,system-ui,sans-serif;--font-sans:'Lexend Deca',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--font-sans)}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.reveal{animation:rise 0.7s ease-out both;animation-timeline:view();animation-range:entry 4% entry 40%}
+.figframe{width:100%;border-radius:16px;overflow:hidden;background:#EDECE8;border:0.5px solid #D8D6D0}
+.figframe img{width:100%;display:block}
+.figcap{margin:14px 2px 0;font:400 13px/1.5 var(--font-sans);color:#8A8A85}
+@media(max-width:768px){
+  nav[data-dcnav]{padding:16px 20px!important}
+  nav[data-dcnav] .navpills{display:none!important}
+  #top{padding:132px 20px 40px!important}
+  section .secgrid{grid-template-columns:1fr!important}
+  .twocol{grid-template-columns:1fr!important}
+  .loopgrid{grid-template-columns:1fr!important}
+  .padx{padding-left:20px!important;padding-right:20px!important}
+}
+</style>
+</helmet>
+
+<!-- ── STICKY NAV ── -->
+<nav data-dcnav style="position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 48px;background:rgba(242,241,238,0.82);border-bottom:0.5px solid #D8D6D0;backdrop-filter:blur(14px)">
+  <a href="/" style="display:flex;align-items:center;gap:16px;text-decoration:none;justify-self:start">
+    <div style="width:44px;height:44px;flex:none;border-radius:12px;background:#ffffff;border:0.5px solid #D8D6D0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:16px;color:#0D0D0D">d<span style="color:#F54900">c</span></div>
+    <span style="font-family:var(--font-display);font-weight:600;font-size:36px;color:#0D0D0D;white-space:nowrap">david<span style="color:#F54900">.</span>cervantes</span>
+  </a>
+  <div class="navpills" style="display:flex;align-items:center;gap:8px">
+    <a href="/About" style="font:500 14px var(--font-sans);color:#0D0D0D;text-decoration:none;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:11px 22px;transition:color 150ms ease-out" style-hover="color:#F54900">About</a>
+    <a href="/Experience" style="font:500 14px var(--font-sans);color:#0D0D0D;text-decoration:none;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:11px 22px;transition:color 150ms ease-out" style-hover="color:#F54900">Experience</a>
+    <a href="/Work" style="font:500 14px var(--font-sans);text-decoration:none;background:#0D0D0D;color:#F2F1EE;border:0.5px solid #0D0D0D;border-radius:999px;padding:11px 22px">Work</a>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:flex-end">
+    <a href="mailto:uxokdc@gmail.com?subject=M%20Social" aria-label="Email David" style="display:inline-flex;align-items:center;gap:8px;color:#0D0D0D;text-decoration:none;border:0.5px solid #D8D6D0;border-radius:999px;width:44px;height:44px;justify-content:center;transition:color 150ms ease-out,border-color 150ms ease-out" style-hover="color:#F54900;border-color:#F54900">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/davidcervantes/" target="_blank" rel="noopener" aria-label="LinkedIn profile" style="display:inline-flex;align-items:center;gap:8px;color:#0D0D0D;text-decoration:none;border:0.5px solid #D8D6D0;border-radius:999px;width:44px;height:44px;justify-content:center;transition:color 150ms ease-out,border-color 150ms ease-out" style-hover="color:#F54900;border-color:#F54900">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"></path></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div id="top" style="max-width:1240px;margin:0 auto;padding:180px 48px 48px" data-screen-label="Case Hero">
+  <a href="/Work" style="display:inline-flex;align-items:center;gap:8px;font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;text-decoration:none;margin-bottom:28px;transition:color 150ms ease-out" style-hover="color:#F54900"><span style="font-size:15px">←</span> Back to work</a>
+  <div style="animation:rise 0.8s ease-out both">
+    <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.14em;color:#F54900;margin-bottom:20px">M Social · Applied AI</div>
+    <h1 style="margin:0 0 28px;font-family:var(--font-display);font-weight:600;font-size:clamp(38px,5.4vw,80px);line-height:1.02;letter-spacing:-0.03em;color:#0D0D0D;max-width:20ch">Turning social content from an authoring problem into a decision system</h1>
+    <p style="margin:0 0 36px;font:400 clamp(18px,1.8vw,24px)/1.5 var(--font-sans);color:#3A3935;max-width:62ch">Most AI social tools begin with an empty box. I designed M Social around a different premise: the system should help make the content decision, not merely produce more content. The AI does the production work. The person decides what represents them.</p>
+    <div style="display:inline-flex;align-items:center;gap:10px;font:500 13px/1.3 var(--font-display);color:#0D0D0D;background:#ffffff;border:0.5px solid #D8D6D0;border-radius:999px;padding:10px 18px;margin:0 0 40px">
+      <span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#2D9973;display:inline-block"></span>
+      <span>Production-hosted proof of concept · core loop verified · live publishing intentionally gated</span>
+    </div>
+  </div>
+  <div class="secgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:0.5px solid #D8D6D0;border-bottom:0.5px solid #D8D6D0;padding:26px 0">
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">My role</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Founder · product strategy · AI experience architect · builder</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Discipline</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Reactive AI · brand intelligence · compliance workflows</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Validation</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Multi-tenant: a bilingual realtor + Texanero</div></div>
+    <div><div style="font:500 11px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:8px">Methods</div><div style="font:500 15px var(--font-sans);color:#0D0D0D">Reactive AI · Intent-Centered Design · Conversational Flow Mapping</div></div>
+  </div>
+</div>
+
+<!-- ── HERO IMAGE ── -->
+<div class="padx" style="max-width:1240px;margin:0 auto;padding:0 48px 8px" data-screen-label="Hero Image">
+  <div class="figframe">
+    <img src="assets/msocial/msocial-01.jpg" alt="M Social dashboard — a decision feed showing what needs attention, what's scheduled, and what the system recommends" loading="eager">
+  </div>
+  <p class="figcap">The home experience is a feed of decisions, not a blank composer — what needs attention, what's scheduled, and what the system prepared, with a reason it matters now.</p>
+</div>
+
+<!-- ── THE HUMAN PROBLEM ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Problem">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">The human problem</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 22px;font:400 clamp(18px,1.7vw,24px)/1.55 var(--font-sans);color:#0D0D0D">The problem was never a shortage of generated words. It was the amount of context a person had to carry.</p>
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Maintaining a social presence is not one task — it's a continuous chain of small decisions: notice an opportunity, decide whether it matters, find an angle, remember the brand voice, create the copy, source or generate media, adapt it to a platform, check it, schedule it, then watch what happened.</p>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Most AI tools just placed a generator inside that existing workflow. The person still had to see the opportunity and assemble every step. The blank page remained the starting point — the writing got faster, the cognitive burden stayed intact. The more tools involved, the more the person became the integration layer between them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE REFRAME ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Reframe">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">The reframe</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 20px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The product question could have been <i>“How can AI create social posts faster?”</i> The more useful question became: how can the system recognize a meaningful reason to communicate, prepare the right response, and return a trustworthy decision to the person?</p>
+      <p style="margin:0 0 8px;font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.7vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#0D0D0D">Other tools make content faster. M Social helps make the content decision — and shows its work.</p>
+      <p style="margin:20px 0 0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The user's job shifts from authoring every step to deciding what should move forward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIGURE: COMPOSER / CONVERSATIONAL ── -->
+<div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) 48px">
+  <div class="figframe"><img src="assets/msocial/msocial-03.jpg" alt="M Social create view — a plain-language request produces a complete draft with caption, hashtags, AI-generated image, and a synthetic-media disclosure" loading="lazy"></div>
+  <p class="figcap">A plain-language request — “I got new belts in, will you put me a post?” — returns a complete draft: caption, hashtags, and media in one pass, with the synthetic-media disclosure attached, ready to refine.</p>
+</div>
+
+<!-- ── THE OPERATING LOOP ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Operating loop">
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,110px) 48px">
+    <h2 style="margin:0 0 12px;font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.4vw,60px);line-height:1;letter-spacing:-0.03em;color:#0D0D0D">The operating loop</h2>
+    <p style="margin:0 0 clamp(32px,4vw,52px);font:500 clamp(17px,1.7vw,22px)/1.4 var(--font-display);color:#3A3935">Signal → Intent → Action → Human decides → Outcome → Learning</p>
+    <div class="loopgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)">
+      <div style="border:0.5px solid #D8D6D0;border-radius:16px;padding:24px;background:#ffffff"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F54900;margin-bottom:10px">Signal</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#3A3935">A market moment, business event, content opportunity, scheduled need, or a direct request creates a reason to communicate.</p></div>
+      <div style="border:0.5px solid #D8D6D0;border-radius:16px;padding:24px;background:#ffffff"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F54900;margin-bottom:10px">Intent</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#3A3935">The system connects that signal to the tenant's business, brand goal, audience, voice, channel, and current priorities.</p></div>
+      <div style="border:0.5px solid #D8D6D0;border-radius:16px;padding:24px;background:#ffffff"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F54900;margin-bottom:10px">Action</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#3A3935">M Social prepares the post, image, caption, hashtags, alt text, platform choice, and the appropriate compliance checks.</p></div>
+      <div style="border:0.5px solid #0D0D0D;border-radius:16px;padding:24px;background:#0D0D0D"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F1B892;margin-bottom:10px">Human decides</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#D8D6D0">The person reviews the actual artifact and chooses whether it proceeds. Approval is attached to that exact version.</p></div>
+      <div style="border:0.5px solid #D8D6D0;border-radius:16px;padding:24px;background:#ffffff"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F54900;margin-bottom:10px">Outcome</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#3A3935">The approved post moves into the queue. External publishing stays in dry-run until the human send checkpoint is deliberately enabled.</p></div>
+      <div style="border:0.5px solid #D8D6D0;border-radius:16px;padding:24px;background:#ffffff"><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.1em;color:#F54900;margin-bottom:10px">Learning</div><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:#3A3935">The outcome can inform future recommendations, timing, brand behavior, and decision quality.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIGURE: DRAFTS ── -->
+<div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) 48px">
+  <div class="figframe"><img src="assets/msocial/msocial-02.jpg" alt="M Social drafts — a saved post pairs an AI-generated leather-goods image with on-brand copy in the tenant's voice" loading="lazy"></div>
+  <p class="figcap">Copy and image are prepared as one coordinated artifact in the tenant's own voice — brand and business context travel through the whole generation workflow.</p>
+</div>
+
+<!-- ── TRUST ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Trust">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">Trust is a workflow, not a disclaimer</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 22px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The most important product decision wasn't the generation model — it was the compliance gate. It evaluates <b style="color:#0D0D0D">synthetic-media disclosure</b> (added and verified from the provider's signal, not guessed from the prompt), <b style="color:#0D0D0D">Fair Housing</b> for real-estate content (assigned administratively — a realtor can't switch the protection off), <b style="color:#0D0D0D">brand-language rules</b> (the tenant's social voice, distinct from the product's interface voice), and <b style="color:#0D0D0D">alt text</b> on every generated image.</p>
+      <p style="margin:0 0 16px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">And every check has three honest states — not two:</p>
+      <div class="loopgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 18px">
+        <div style="border:0.5px solid #D8D6D0;border-radius:14px;padding:18px;background:#ffffff"><div style="font:600 14px var(--font-display);color:#2D9973;margin-bottom:6px">Pass</div><p style="margin:0;font:400 14px/1.5 var(--font-sans);color:#3A3935">The check ran and the artifact satisfied it.</p></div>
+        <div style="border:0.5px solid #D8D6D0;border-radius:14px;padding:18px;background:#ffffff"><div style="font:600 14px var(--font-display);color:#C0392B;margin-bottom:6px">Fail</div><p style="margin:0;font:400 14px/1.5 var(--font-sans);color:#3A3935">The check ran and identified a problem.</p></div>
+        <div style="border:0.5px solid #D8D6D0;border-radius:14px;padding:18px;background:#ffffff"><div style="font:600 14px var(--font-display);color:#8A8A85;margin-bottom:6px">Skipped</div><p style="margin:0;font:400 14px/1.5 var(--font-sans);color:#3A3935">The system could not perform the check.</p></div>
+      </div>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#0D0D0D"><b>Skipped never collapses into pass.</b> A model being unavailable doesn't make content safe — live publishing requires the gate to have actually run. The system never replaces missing judgment with false confidence.</p>
+    </div>
+  </div>
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:0 48px clamp(40px,5vw,64px)">
+    <div class="figframe"><img src="assets/msocial/msocial-05.jpg" alt="M Social analytics — reach and engagement shown honestly as 'unavailable' where the provider exposes no metrics, with real database counts beside them" loading="lazy"></div>
+    <p class="figcap">Honest states extend to analytics: where the provider exposes no metrics endpoint, reach reads “unavailable” rather than zero — the interface never manufactures confidence it doesn't have.</p>
+  </div>
+</section>
+
+<!-- ── APPROVAL BINDS TO THE ARTIFACT ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Approval">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">Approval belongs to the artifact</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">Approval is bound to the exact post the person reviewed. If the content is regenerated, it becomes a new artifact that requires a new decision — the workflow never asks the AI to create a fresh version after approval and then silently send it.</p>
+      <p style="margin:0;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#0D0D0D">This prevents a common agentic failure: approving an intention while the system later acts on something materially different. The person approves the words and image that will move forward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── MULTI-INDUSTRY ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Multi-industry">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">One product, many industries</h2>
+    <div style="max-width:720px">
+      <p style="margin:0 0 18px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The first version contained a revealing mistake: it assumed the tenant was a real-estate agent. Tested with Texanero, a Western-wear brand, it placed house-showing language into a clothing post. The AI was functioning — the product model was wrong.</p>
+      <p style="margin:0 0 20px;font:400 clamp(16px,1.5vw,20px)/1.62 var(--font-sans);color:#3A3935">The fix wasn't another prompt instruction. Business context became a first-class part of the tenant model — every account explicitly carries what the business does, its voice, goals, cadence, channels, locale, and compliance profile.</p>
+      <p style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.2vw,28px);line-height:1.18;letter-spacing:-0.01em;color:#0D0D0D">Never make the person correct an assumption the system could have represented properly.</p>
+    </div>
+  </div>
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:0 48px clamp(40px,5vw,64px)">
+    <div class="figframe"><img src="assets/msocial/msocial-04.jpg" alt="M Social explore — trends in the tenant's lane, styles, and image effects the person can draft from directly" loading="lazy"></div>
+    <p class="figcap">Reactive AI made visible — the system surfaces trends in the tenant's lane and formats that are landing, so a post can begin with a reason to act rather than a blank page.</p>
+  </div>
+</section>
+
+<!-- ── WHAT IT TAUGHT ME ── -->
+<section style="border-top:0.5px solid #D8D6D0" data-screen-label="Lessons">
+  <div class="secgrid padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,120px) 48px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#F1B892">What this taught me</h2>
+    <div style="max-width:720px">
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:22px">
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Generation is not the whole experience.</b> The value is understanding why something should be created, maintaining the right context, validating the artifact, and guiding a decision.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Compliance can't be optional at the moment it becomes inconvenient.</b> Industry protections belong to the operating model, not to a preference someone can switch off to move faster.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">A skipped check is not a successful check.</b> Agentic systems need honest states for uncertainty — otherwise the interface builds trust precisely when it should build caution.</p></li>
+        <li style="display:grid;grid-template-columns:20px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="color:#F54900;margin-top:6px">●</span><p style="margin:0;font:400 clamp(16px,1.5vw,19px)/1.55 var(--font-sans);color:#3A3935"><b style="color:#0D0D0D;font-weight:600">Product assumptions can be more dangerous than model errors.</b> Better context architecture solved what another clever prompt would not — and autonomy should be earned, not quietly switched on.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELATIONSHIP TO AGENT OS ── -->
+<a href="Seamless Agent OS Case Study.html" style="display:block;text-decoration:none;border-top:0.5px solid #D8D6D0;transition:background 200ms ease-out" style-hover="background:#ECEAE4">
+  <div class="padx reveal" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,72px) 48px">
+    <div style="max-width:820px">
+      <div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:14px">Part of the same methodology →</div>
+      <p style="margin:0;font:400 clamp(17px,1.7vw,23px)/1.5 var(--font-sans);color:#0D0D0D">M Social applies the operating principles behind <b>Seamless Agent OS</b> inside one specific business workflow: intent guides execution, context persists outside one prompt, providers are replaceable, consequential actions need explicit authority, and uncertainty stays visible. It shows how those principles decide what a brand should publish — and safely prepare it for action.</p>
+    </div>
+  </div>
+</a>
+
+<!-- ── STACK + RETURN ── -->
+<section style="border-top:0.5px solid #D8D6D0">
+  <div class="padx" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,64px) 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="font:400 13px/1.6 var(--font-sans);color:#8A8A85;max-width:72ch"><span style="color:#0D0D0D;font-weight:500">Selected architecture:</span> Next.js · React · TypeScript · Tailwind · Neon Postgres · Prisma · Supabase magic-link · free-first model routing (OpenRouter, Anthropic fallback) · Fal media behind a replaceable interface · market-specific compliance modules · artifact-bound approval · dry-run publishing</div>
+    <a href="/Work" style="display:inline-flex;align-items:center;gap:8px;font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;text-decoration:none;transition:color 150ms ease-out" style-hover="color:#F54900"><span style="font-size:15px">←</span> Back to work</a>
+  </div>
+</section>
+
+<!-- ── NEXT ── -->
+<a href="TraderVault LM Case Study.html" style="display:block;text-decoration:none;border-top:0.5px solid #D8D6D0;transition:background 200ms ease-out" style-hover="background:#ECEAE4">
+  <div class="padx" style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <div><div style="font:500 12px var(--font-display);text-transform:uppercase;letter-spacing:0.12em;color:#8A8A85;margin-bottom:10px">Next project</div><div style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,5vw,68px);line-height:1;letter-spacing:-0.03em;color:#0D0D0D">TraderVault LM</div></div>
+    <span style="font-size:clamp(32px,5vw,64px);color:#F54900" aria-hidden="true">→</span>
+  </div>
+</a>
+
+<!-- ── FOOTER ── -->
+<div style="position:relative;background:#0D0D0D;color:#F2F1EE;padding:48px;overflow:hidden" data-screen-label="Footer">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px 40px">
+    <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:#F2F1EE">david<span style="color:#F54900">.</span>cervantes <span style="font-weight:500;color:#8A8A85;font-size:15px;margin-left:12px">AI product and experience leader</span></div>
+    <div style="display:flex;align-items:center;gap:8px;font:300 15px var(--font-sans);color:#8A8A85"><span style="width:7px;height:7px;border-radius:50%;background:#2D9973;display:inline-block" aria-hidden="true"></span>Available for select roles and engagements</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
